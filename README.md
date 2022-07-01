@@ -1,0 +1,38 @@
+
+# denofreshpreactsbw
+
+# License: MIT 
+
+# Packages:
+- deno https://fresh.deno.dev/ 
+- fresh https://deno.land/x/fresh@1.0.0/
+- preact https://esm.sh/preact@10.8.1
+- threejs https://esm.sh/three@0.142.0
+- mongodb https://deno.land/x/mongo@v0.30.1/mod.ts
+
+# Languages:
+- typescript (main)
+- javascript
+
+# Information:
+  Sandbox World Testing.
+
+  Work in progress testing for threejs, Deno, Fresh and other typescript and javascript.
+
+  Fresh http server have different way to handle page, island and other things simalar to nextjs. Note there different format from nodejs.
+
+  Deno is application to serve typescript and javascript.
+
+# set up:
+  Install deno https://fresh.deno.dev/
+
+## Command Line:
+
+```cmd
+deno task start
+```
+
+# refs:
+ - https://fresh.deno.dev/
+ - https://deno.land/
+ - https://deno.com/blog/supabase-functions-on-deno-deploy
