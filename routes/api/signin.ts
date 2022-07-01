@@ -12,6 +12,7 @@ import { User } from "../../database.ts"
 //import { getCookies } from 'https://deno.land/std/http/cookie.ts';
 import { setCookie } from "https://deno.land/std/http/cookie.ts";
 import {encode, decode} from "https://deno.land/std/encoding/base64.ts";
+import * as bcrypt from "https://deno.land/x/bcrypt/mod.ts";
 
 
 export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Response> => {
@@ -26,12 +27,16 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Resp
   }
 
   const data = await _req.json(); //json post
-  //console.log(data)
-  const user1 = await User.findOne({ name: data.alias });
+  console.log(data)
+  const user1 = await User.findOne({ alias: data.alias });
   if(user1){
     //console.log(user1)
     //console.log("FOUND!")
-    if(user1.password == data.passphrase){
+    const result = bcrypt.compareSync(data.passphrase,user1.hash);
+    console.log("result")
+    console.log(result)
+
+    if(result==true){
       const token = {
         alias:"test"
       };
@@ -58,17 +63,7 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Resp
       return new Response(body1);
     }
   }else{
-    const insertId = await User.insertOne({
-      name: "user1",
-      password: "pass1",
-      email: "",
-      phone: "",
-      salt: "",
-      hash: "",
-      token: ""
-    });
-    //console.log(insertId)
-    const body1 = JSON.stringify({api:'CREATED'});
+    const body1 = JSON.stringify({api:'NOTEXIST'});
     return new Response(body1);
   }
 

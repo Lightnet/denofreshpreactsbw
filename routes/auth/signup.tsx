@@ -10,13 +10,6 @@ import UISignUp from "../../islands/UISignUp.tsx"
 
 // https://fresh.deno.dev/docs/concepts/data-fetching
 //return new Response("Project not found", { status: 404 });
-/*
-interface User {
-  login: string;
-  name: string;
-  avatar_url: string;
-}
-*/
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -25,28 +18,12 @@ export const handler: Handlers = {
     resp.headers.set("X-Custom-Header", "Hello");
     return resp;
   },
-  //POST(_req, ctx) {
-    //console.log("POST?")
-    //const resp = await fetch(`http://localhost:3000/auth/signup`,{
-      //method: 'POST',
-      //headers: {
-        //'Content-Type': 'application/json'
-      //}
-    //});
-
-    //const { username } = ctx.params;
-    //console.log(ctx)
-    //console.log(_req)
-    //console.log(_req.body)
-    //const params = ctx.params;
-    //console.log(params)
-    //return ctx.render({test:'text'});
-  //},
 };
 
 export default function SignUp() {
 
   const [bSign, setBSign] = useState(true);
+  console.log("IS_BROWSER:",IS_BROWSER)
 
   return (
     <div>

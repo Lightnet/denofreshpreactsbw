@@ -18,7 +18,7 @@ export default function Threejs() {
   return (
     <div>
       <p>
-        Widget
+        Threejs
       </p>
       <PageThreejs/>
     </div>

@@ -25,8 +25,8 @@ export const handler: Handlers<Data> = {
     const cookies = getCookies(_req.headers);
     //console.log(cookies)
     if(cookies.token){
-      console.log("cookies.token")
-      console.log(cookies.token)
+      //console.log("cookies.token")
+      //console.log(cookies.token)
       //const token = decode(cookies.token);
       const token = new TextDecoder().decode(decode(cookies.token));
       console.log("token")
@@ -48,10 +48,14 @@ export default function Home({ data }: PageProps<Data>) {
       <div>
         <p> Welcome {userName}, to Deno and Fresh API </p>
         {isLogin === true && <Fragment>
-          <a href="/auth/signout">Sign Out</a>
+          <a href="/threejs">Threejs</a> <span> </span>
+          <a href="/editor">Editor</a> <span> </span>
+          <a href="/game">Game</a> <span> </span>
+          <a href="/mobilebase">Mobile Base</a> <span> </span>
+          <a href="/auth/signout">Sign Out</a> <span> </span>
         </Fragment>}
         {isLogin === false && <Fragment>
-          <a href="/auth/signin">Login</a> <span> </span>
+          <a href="/auth/signin">Sign In</a> <span> </span>
           <a href="/auth/signup">Sign Up</a>
         </Fragment>}
       </div>

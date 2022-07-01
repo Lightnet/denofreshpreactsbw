@@ -7,18 +7,24 @@
 // https://github.com/lucacasonato/freshworkshop/blob/main/routes/_middleware.ts#L12
 // https://doc.deno.land/https://deno.land/std@0.146.0/http/cookie.ts/~/deleteCookie
 import { HandlerContext } from "$fresh/server.ts";
-import { User } from "../../database.ts"
+//import { User } from "../../database.ts"
 // https://medium.com/deno-the-complete-reference/handling-cookies-in-deno-df42df28d222
 // https://deno.land/x/cookies@1.0.0
 //import { getCookies } from 'https://deno.land/std/http/cookie.ts';
 import { setCookie, deleteCookie } from "https://deno.land/std/http/cookie.ts";
-import {encode, decode} from "https://deno.land/std/encoding/base64.ts";
+//import {encode, decode} from "https://deno.land/std/encoding/base64.ts";
 
 
 export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Response> => {
   //const randomIndex = Math.floor(Math.random() * 10);
   //const body = JOKES[randomIndex];
   console.log("sign out!")
+  function test(){
+
+  }
+  await test();
+  //need to check token database to clear
+
 
   const body1 = JSON.stringify({api:'LOGOUT'});
   const resp = new Response(body1);

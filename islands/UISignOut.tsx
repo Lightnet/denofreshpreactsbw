@@ -26,7 +26,7 @@ export default function UILogin() {
     console.log(data)
     if(data.api){
       if(data.api=="LOGOUT"){
-        window.location = "/";
+        window.location.assign("/");
       }
     }
   }
@@ -37,7 +37,7 @@ export default function UILogin() {
         <tbody>
           <tr>
             <td>
-              <label> Alias: </label>
+              <label> Are you sure Sign out? </label>
             </td>
           </tr>
           <tr>

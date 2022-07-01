@@ -5,30 +5,13 @@ import { IS_BROWSER } from "$fresh/runtime.ts";
 
 export default function UISignup() {
   const [alias, setAlias] = useState("test");
-  const [passphrase, setpassphrase] = useState("test");
+  const [question1, setQuestion1] = useState("");
+  const [question2, setQuestion2] = useState("");
   const [email, setEmail] = useState("");
 
-  function inputAlias(e:Event){
-    if (e.target instanceof HTMLInputElement) {
-      setAlias(e.target.value);
-    }
-  }
-
-  function inputPassphrase(e:Event){
-    if (e.target instanceof HTMLInputElement) {
-      setpassphrase(e.target.value);
-    }
-  }
-
-  function inputEmail(e:Event){
-    if (e.target instanceof HTMLInputElement) {
-      setEmail(e.target.value);
-    }
-  }
-
-  async function btnRegister(){
+  async function btnForgot(){
     console.log("register")
-    const urlSign = `/api/signup`;
+    const urlSign = `/api/forgot`;
     //const urlSign = `/auth/signup`;
     const rawResponse:any = await fetch(urlSign,{
       method: 'POST',
@@ -38,12 +21,14 @@ export default function UISignup() {
       },
       body: JSON.stringify({
         alias:alias,
-        passphrase:passphrase,
-        email:email,
+        question1:question1,
+        email:"tests",
       })
       
     });
     //const content:any = await rawResponse.json();
+
+
   }
 
   return (
@@ -55,35 +40,24 @@ export default function UISignup() {
               <label> Alias: </label>
             </td>
             <td>
-              <input value={alias} onChange={inputAlias}/>
+              <input value={alias}/>
             </td>
           </tr>
           <tr>
             <td>
-              <label> Passphrase: </label>
+              <label> Question 1: </label>
             </td>
             <td>
-              <input value={passphrase} onChange={inputPassphrase}/>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label> EMail: </label>
-            </td>
-            <td>
-              <input value={email} onChange={inputEmail}/>
+              <input value={question1}/>
             </td>
           </tr>
 
           <tr>
             <td colSpan={2}>
-              <button onClick={() => btnRegister()}>
-                Submit
+              <button onClick={() => btnForgot()}>
+                Recovery
               </button>
               <span> </span>
-              <button onClick={() => btnRegister()}>
-                Cancel
-              </button>
               <span>  </span>
               <a href="/auth/signin">Login</a>
               <span> | </span>
@@ -94,7 +68,6 @@ export default function UISignup() {
         </tbody>
       </table>
 
-      
     </div>
   );
 }

@@ -5,12 +5,9 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
 import UISignOut from "../../islands/UISignOut.tsx"
+import ButtonTest from "../../islands/ButtonTest.tsx"
 
 export default function SignOut() {
-
-  function Test(){
-    console.log("test...")
-  }
 
   return (
     <div>
@@ -18,7 +15,6 @@ export default function SignOut() {
         Sign Out Page
       </p>
       <UISignOut/>
-      <button onClick={()=>Test()}>Test</button>
     </div>
   );
 }

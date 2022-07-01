@@ -14,11 +14,11 @@ export const handler: Handlers = {
   },
 };
 
-export default function MobileBase() {
+export default function Game() {
   return (
     <div>
       <p>
-        Mobile Base
+        Game
       </p>
       <Threejs/>
     </div>

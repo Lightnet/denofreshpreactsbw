@@ -8,7 +8,7 @@ export default function SignIn() {
   return (
     <div>
       <p>
-        Login Page
+        Sign In Page
       </p>
       <UISignIn/>
     </div>

@@ -15,13 +15,12 @@ const Database = client.database("test");
 // Defining schema interface
 interface UserSchema {
   _id: { $oid: string };
-  name: string;
+  alias: string;
   email: string;
-  password: string;
-  phone: string;
   salt: string;
   hash: string;
   token: string;
+  created: number;
 }
 const User = Database.collection<UserSchema>("user");
 export { Database, User };

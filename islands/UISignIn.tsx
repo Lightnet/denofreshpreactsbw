@@ -1,3 +1,6 @@
+
+
+
 /** @jsx h */
 import { h } from "preact";
 import { useState } from "preact/hooks";
@@ -9,10 +12,29 @@ export default function UILogin() {
   const [passphrase, setpassphrase] = useState("test");
   const [email, setEmail] = useState("");
 
+  function inputAlias(e:Event){
+    if (e.target instanceof HTMLInputElement) {
+      setAlias(e.target.value);
+    }
+  }
+
+  function inputPassphrase(e:Event){
+    if (e.target instanceof HTMLInputElement) {
+      setpassphrase(e.target.value);
+    }
+  }
+
+  function inputEmail(e:Event){
+    if (e.target instanceof HTMLInputElement) {
+      setEmail(e.target.value);
+    }
+  }
+
   async function btnLogin(){
     console.log("sign in")
     const urlSign = `/api/signin`;
     //const urlSign = `/auth/signup`;
+    console.log(passphrase);
     const rawResponse = await fetch(urlSign,{
       method: 'POST',
       headers: {
@@ -30,7 +52,7 @@ export default function UILogin() {
     console.log(data)
     if(data.api){
       if(data.api=="PASS"){
-        window.location = "/";
+        window.location.assign("/");
       }
     }
 
@@ -45,7 +67,7 @@ export default function UILogin() {
               <label> Alias: </label>
             </td>
             <td>
-              <input value={alias}/>
+              <input value={alias}  onChange={inputAlias}/>
             </td>
           </tr>
           <tr>
@@ -53,7 +75,7 @@ export default function UILogin() {
               <label> Passphrase: </label>
             </td>
             <td>
-              <input value={passphrase}/>
+              <input value={passphrase} onChange={inputPassphrase}/>
             </td>
           </tr>
 
@@ -77,7 +99,6 @@ export default function UILogin() {
         </tbody>
       </table>
 
-      
     </div>
   );
 }

@@ -23,8 +23,44 @@
 
   Deno is application to serve typescript and javascript.
 
+# Features:
+- Account system
+  - signin (added)
+  - signup (added)
+  - signout (added)
+  - forgot
+  - 
+- token
+
+# Layouts:
+- .vscode ( vscode setting ext )
+- components ( preact )
+- island ( fresh )
+- libs ( ts )
+- routes ( fresh )
+- static ( fresh )
+- .env ( variables / keys )
+- database.ts ( mongodb )
+- deno.json ( simalar to npm cmd )
+- dev.ts ( server set up / fresh)
+- fresh.gen.ts ( fresh / generated )
+- main.ts ( fresh / config )
+- options.ts ( fresh options )
+
+
+
+
 # set up:
   Install deno https://fresh.deno.dev/
+
+## .env
+
+```
+SUPABASE_URL=https://<id>.supabase.co
+SUPABASE_ANON_KEY=<key>
+DATABASE_URL=mongodb://127.0.0.1:27017
+
+```
 
 ## Command Line:
 
