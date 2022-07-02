@@ -47,8 +47,24 @@
 - main.ts ( fresh / config )
 - options.ts ( fresh options )
 
+# Design:
+  This is for notes.
 
+  Fresh framework is simalar to nextjs. But the logic is different and format but still follow same logic to query http url.
 
+```
+  ./routes/index.tsx
+```
+  This is for server and client. But note that the onclick event does not work since it server side render. Used island to handle client side.
+
+  This set up the url page application format to keep it simple.
+
+  It set up the page with server handle request and prcoess like check query user and cookie if exist that reflect the page changes or access.
+
+```
+  ./island/PageIndex.tsx
+```
+  This is for client side. Fresh have check browser or ssr.
 
 # set up:
   Install deno https://fresh.deno.dev/

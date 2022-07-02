@@ -2,10 +2,9 @@
 
 /** @jsx h */
 import { h, Fragment } from "preact";
-import { Handlers, PageProps } from "$fresh/server.ts";
 import { Head } from "$fresh/runtime.ts";
-import PageEditor  from "../islands/PageEditor.tsx";
-
+import { Handlers, PageProps } from "$fresh/server.ts";
+import PageGroupMessage from "../islands/PageGroupMessage.tsx"
 export const handler: Handlers = {
   async GET(req, ctx) {
     console.log("editor");
@@ -15,16 +14,15 @@ export const handler: Handlers = {
   },
 };
 
-export default function Editor() {
+export default function GroupMessage() {
   return (
     <Fragment>
       <Head>
-        <title>Editor</title>
+        <title>Group Message</title>
         <link rel="stylesheet" href="./styles.css"></link>
       </Head>
-      <PageEditor/>
+      <PageGroupMessage/>
     </Fragment>
   );
 }
-// <WebGLRenderer />
 // 

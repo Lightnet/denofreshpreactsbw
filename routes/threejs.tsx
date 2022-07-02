@@ -5,7 +5,6 @@ import { h, Fragment } from "preact";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import PageThreejs from "../islands/PageThreejs.tsx";
 import { Head } from "$fresh/runtime.ts";
-//import style from "./style.css";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -15,8 +14,7 @@ export const handler: Handlers = {
     return resp;
   },
 };
-//<link rel="stylesheet" href="/styles.css"></link>
-// <p>Threejs</p>
+
 export default function Threejs() {
   return (
     <Fragment>
@@ -28,5 +26,4 @@ export default function Threejs() {
     </Fragment>
   );
 }
-// <WebGLRenderer />
 // 

@@ -1,11 +1,11 @@
+
+
 /** @jsx h */
 import { h } from "preact";
-import { useState } from "preact/hooks";
+//import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
-//import * as djwt from "https://deno.land/x/djwt@v2.7/mod.ts";
 
 export default function UILogin() {
-  const [alias, setAlias] = useState("test");
 
   async function btnLogOut(){
     console.log("sign in")

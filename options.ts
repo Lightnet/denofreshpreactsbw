@@ -13,5 +13,6 @@ export default {
     }
     //console.log(body)
   },
-  port: 3000
+  port: 3000,
+  //hostname:'localhost'
 } as FreshOptions;

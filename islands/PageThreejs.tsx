@@ -10,17 +10,14 @@ import { IS_BROWSER } from "$fresh/runtime.ts";
 import { useState, useEffect } from "preact/hooks";
 import * as THREE from "three";
 
-export default function Threejs() {
+export default function PageThreejs() {
 
   // Note server and client is trigger here.
   // threejs require document to work.
-  
 
   const [count, setCount] = useState(0);
   const [canvasID, setCanvasID] = useState("threejs");
   //const [renderer, setRenderer] = useState({renderer:THREE.WebGLRenderer});
-  
-
   //const oldHook = options.vnode;
   //console.log(oldHook);
   //options.vnode = vnode => {
@@ -58,16 +55,13 @@ export default function Threejs() {
       //render.setSize( window.innerWidth, window.innerHeight );
       //document.body.appendChild( render.domElement );
 
-      const divElem:HTMLElement = document.getElementById(canvasID);
+      const divElem = document.getElementById(canvasID);
       if(divElem){
         divElem.appendChild( render.domElement );
       }
       
-
-
       //animate();
       //setRenderer({renderer:render})
-
       function animate() {
         requestAnimationFrame( animate );
         render.render( scene, camera );

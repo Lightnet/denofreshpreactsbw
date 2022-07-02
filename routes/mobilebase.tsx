@@ -1,9 +1,10 @@
 
 
 /** @jsx h */
-import { h } from "preact";
+import { h, Fragment } from "preact";
+import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import Threejs  from "../islands/PageThreejs.tsx";
+import PageMobileBase from "../islands/PageMobileBase.tsx";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -16,13 +17,13 @@ export const handler: Handlers = {
 
 export default function MobileBase() {
   return (
-    <div>
-      <p>
-        Mobile Base
-      </p>
-      <Threejs/>
-    </div>
+    <Fragment>
+      <Head>
+        <title>Threejs</title>
+        <link rel="stylesheet" href="./styles.css"></link>
+      </Head>
+      <PageMobileBase/>
+    </Fragment>
   );
 }
-// <WebGLRenderer />
 // 

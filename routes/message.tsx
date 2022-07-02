@@ -2,9 +2,9 @@
 
 /** @jsx h */
 import { h, Fragment } from "preact";
-import { Handlers, PageProps } from "$fresh/server.ts";
 import { Head } from "$fresh/runtime.ts";
-import PageEditor  from "../islands/PageEditor.tsx";
+import { Handlers, PageProps } from "$fresh/server.ts";
+import PageMessage from "../islands/PageMessage.tsx"
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -15,16 +15,15 @@ export const handler: Handlers = {
   },
 };
 
-export default function Editor() {
+export default function Message() {
   return (
     <Fragment>
       <Head>
-        <title>Editor</title>
+        <title>Message</title>
         <link rel="stylesheet" href="./styles.css"></link>
       </Head>
-      <PageEditor/>
+      <PageMessage/>
     </Fragment>
   );
 }
-// <WebGLRenderer />
 // 
