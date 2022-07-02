@@ -55,7 +55,7 @@ export default function UISignup() {
               <label> Alias: </label>
             </td>
             <td>
-              <input value={alias} onChange={inputAlias}/>
+              <input value={alias} onInput={inputAlias}/>
             </td>
           </tr>
           <tr>
@@ -63,7 +63,7 @@ export default function UISignup() {
               <label> Passphrase: </label>
             </td>
             <td>
-              <input value={passphrase} onChange={inputPassphrase}/>
+              <input value={passphrase} onInput={inputPassphrase}/>
             </td>
           </tr>
           <tr>
@@ -71,7 +71,7 @@ export default function UISignup() {
               <label> EMail: </label>
             </td>
             <td>
-              <input value={email} onChange={inputEmail}/>
+              <input value={email} onInput={inputEmail}/>
             </td>
           </tr>
 

@@ -4,13 +4,12 @@
 import { h, Fragment } from "preact";
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import PageGame  from "../islands/PageGame.tsx";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    console.log("editor");
+    console.log("settings");
     const resp = await ctx.render();
-    resp.headers.set("X-Custom-Header", "Hello");
+    //resp.headers.set("X-Custom-Header", "Hello");
     return resp;
   },
 };
@@ -22,7 +21,9 @@ export default function Game() {
         <title>Game</title>
         <link rel="stylesheet" href="./styles.css"></link>
       </Head>
-      <PageGame/>
+      <div>
+        <button> Theme </button> 
+      </div>      
     </Fragment>
   );
 }

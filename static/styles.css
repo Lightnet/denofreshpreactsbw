@@ -1,6 +1,26 @@
+:root {
+  --background-color: rgb(212, 212, 212);
+  --text-color: #121416d8;
+  --link-color: #543fd7;
+}
+
+html[data-theme='light'] {
+  --background-color: rgb(212, 212, 212);
+  --text-color: #121416d8;
+  --link-color: #543fd7;
+}
+
+html[data-theme='dark'] {
+  --background-color: #212a2e;
+  --text-color: rgb(212, 212, 212);
+  --link-color: #828fff;
+}
+
 body {
   margin: 0;
   padding: 0;
+  background: var(--background-color);
+  color: var(--text-color);
 }
 
 .fillscreen {

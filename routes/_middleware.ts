@@ -1,10 +1,10 @@
 /*
-  Top layer filter...
+  Top layer filter current page or document html.
 */
 
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
 import { Database } from '../database.ts'
-import { deleteCookie, setCookie, getCookies } from "https://deno.land/std/http/cookie.ts";
+//import { deleteCookie, setCookie, getCookies } from "https://deno.land/std/http/cookie.ts";
 
 export interface State {
   context: Context
@@ -12,6 +12,8 @@ export interface State {
 
 export class Context {
   private static context: Context
+  // deno-lint-ignore no-explicit-any
+  database: any;
 
   public constructor() {
     //this.database = new Database('sqlite.db')
@@ -36,7 +38,12 @@ export async function handler(
   ctx: MiddlewareHandlerContext<State>,
 ) {
   //console.log("middleware")
-  const cookies = getCookies(_req.headers);//need to check access
+  //const { socket, response } = Deno.upgradeWebSocket(_req);
+  //console.log(_req)
+  //console.log(ctx)
+  //console.log(_req.headers)
+  
+  //const cookies = getCookies(_req.headers);//need to check access
   //console.log(cookies)
   //if (cookies.locale) {//test
     //console.log(cookies.locale)

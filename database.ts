@@ -1,5 +1,12 @@
 // https://github.com/denoland/fresh/issues/235
 // https://deno.land/x/mongo@v0.30.1
+// https://thecodebarbarian.com/working-with-mongoose-in-typescript.html
+// https://deno.land/x/mongo@v0.13.0/EXAMPLES.md
+// 
+// 
+// 
+
+
 import { config } from "https://deno.land/x/dotenv@v3.2.0/mod.ts";
 import { MongoClient } from "https://deno.land/x/mongo@v0.30.1/mod.ts";
 
@@ -24,5 +31,22 @@ interface UserSchema {
   created: number;
 }
 const User = Database.collection<UserSchema>("user");
-export { Database, User };
+
+interface MessageSchema {
+  _id: { $oid: string };
+  recipientID: string;
+  recipient: string;// a person or thing that receives or is awarded something.
+  userID: string;
+  alias: string;
+  subject: string;
+  content: string;
+  created: number;
+}
+const Message = Database.collection<MessageSchema>("message");
+
+export { 
+  Database, 
+  User, 
+  Message 
+};
 console.log("init database!")

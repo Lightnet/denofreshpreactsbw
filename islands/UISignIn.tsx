@@ -67,7 +67,7 @@ export default function UILogin() {
               <label> Alias: </label>
             </td>
             <td>
-              <input value={alias}  onChange={inputAlias}/>
+              <input value={alias}  onInput={inputAlias}/>
             </td>
           </tr>
           <tr>
@@ -75,7 +75,7 @@ export default function UILogin() {
               <label> Passphrase: </label>
             </td>
             <td>
-              <input value={passphrase} onChange={inputPassphrase}/>
+              <input value={passphrase} onInput={inputPassphrase}/>
             </td>
           </tr>
 
