@@ -15,6 +15,7 @@ const Database = client.database("test");
 // Defining schema interface
 interface UserSchema {
   _id: { $oid: string };
+  userID: string;
   alias: string;
   email: string;
   salt: string;
