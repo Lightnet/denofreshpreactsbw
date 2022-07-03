@@ -1,3 +1,8 @@
+/*
+  License: MIT
+  Created by: Lightnet
+*/
+
 //testing...
 // https://github.com/denoland/fresh/issues/347
 

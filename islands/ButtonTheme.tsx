@@ -1,3 +1,8 @@
+/*
+  License: MIT
+  Created by: Lightnet
+*/
+
 // https://lukelowrey.com/css-variable-theme-switcher/
 
 /** @jsx h */

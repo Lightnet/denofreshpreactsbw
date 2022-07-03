@@ -1,6 +1,7 @@
-
-
-
+/*
+  License: MIT
+  Created by: Lightnet
+*/
 
 // https://threejs.org/docs/#manual/en/introduction/WebGL-compatibility-check
 // https://threejs.org/docs/#manual/en/introduction/Creating-a-scene

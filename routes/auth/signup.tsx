@@ -1,8 +1,10 @@
-
-
+/*
+  License: MIT
+  Created by: Lightnet
+*/
 
 /** @jsx h */
-import { h } from "preact";
+import { h, Fragment } from "preact";
 import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
@@ -26,11 +28,8 @@ export default function SignUp() {
   console.log("IS_BROWSER:",IS_BROWSER)
 
   return (
-    <div>
-      <p>
-        Sign Up Page
-      </p>
+    <Fragment>
       <UISignUp/>
-    </div>
+    </Fragment>
   );
 }

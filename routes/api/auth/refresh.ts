@@ -7,10 +7,11 @@ import { HandlerContext } from "$fresh/server.ts";
 export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Response> => {
 
 
-  let data0 = {
-    text:"test"
-  }
+  function test(){}
+  await test();
 
-  const body = JSON.stringify(data0);
+  const body = JSON.stringify({
+    text:"test"
+  });
   return new Response(body);
 };

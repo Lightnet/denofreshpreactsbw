@@ -1,10 +1,10 @@
+/*
+  License: MIT
+  Created by: Lightnet
+*/
 
 // https://preactjs.com/guide/v8/api-reference/#lifecycle-methods
-/*
 
-componentDidMount
-componentWillUnmount
-*/
 /** @jsx h */
 import { h } from "preact";
 import { useEffect, useState } from "preact/hooks";

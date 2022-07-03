@@ -1,11 +1,13 @@
-
-
+/*
+  License: MIT
+  Created by: Lightnet
+*/
 
 /** @jsx h */
 import { h, Fragment } from "preact";
 import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
-
+import ButtonAxiod from "./ButtonAxiod.tsx"
 
 export default function PageTestLab() {
 
@@ -20,7 +22,10 @@ export default function PageTestLab() {
 
   return (
     <Fragment>
-      <div id={canvasID} style="height:100vh;width:100%;"></div>
+      <div id={canvasID} style="height:100vh;width:100%;">
+
+      <ButtonAxiod />
+      </div>
     </Fragment>
   );
 }

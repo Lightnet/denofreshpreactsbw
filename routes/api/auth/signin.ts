@@ -6,7 +6,7 @@
 // https://github.com/lucacasonato/freshworkshop/blob/main/routes/_middleware.ts#L12
 
 import { HandlerContext } from "$fresh/server.ts";
-import { User } from "../../database.ts"
+import { User } from "../../../database.ts"
 // https://medium.com/deno-the-complete-reference/handling-cookies-in-deno-df42df28d222
 // https://deno.land/x/cookies@1.0.0
 //import { getCookies } from 'https://deno.land/std/http/cookie.ts';

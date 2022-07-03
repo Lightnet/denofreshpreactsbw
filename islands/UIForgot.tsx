@@ -1,3 +1,8 @@
+/*
+  License: MIT
+  Created by: Lightnet
+*/
+
 /** @jsx h */
 import { h } from "preact";
 import { useState } from "preact/hooks";
@@ -11,7 +16,7 @@ export default function UISignup() {
 
   async function btnForgot(){
     console.log("register")
-    const urlSign = `/api/forgot`;
+    const urlSign = `/api/auth/forgot`;
     //const urlSign = `/auth/signup`;
     const rawResponse:any = await fetch(urlSign,{
       method: 'POST',

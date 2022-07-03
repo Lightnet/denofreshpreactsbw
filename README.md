@@ -25,12 +25,22 @@
 
 # Features:
 - Account system
-  - signin (added)
-  - signup (added)
-  - signout (added)
+  - signin ( added )
+  - signup ( added )
+  - signout ( added )
   - forgot
-  - 
-- token
+  - token
+- threejs
+  - simple scene ( added )
+  - editor ( wip )
+  - game ( wip )
+- chat websocket ( on hold )
+- message ( wip )
+- group message ( wip )
+- contact ( wip )
+- mobilebase ( wip )
+- testlab ( testing components )
+
 
 # Layouts:
 - .vscode ( vscode setting ext )

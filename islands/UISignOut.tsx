@@ -1,4 +1,7 @@
-
+/*
+  License: MIT
+  Created by: Lightnet
+*/
 
 /** @jsx h */
 import { h } from "preact";
@@ -9,7 +12,7 @@ export default function UILogin() {
 
   async function btnLogOut(){
     console.log("sign in")
-    const urlSign = `/api/signout`;
+    const urlSign = `/api/auth/signout`;
     //const urlSign = `/auth/signup`;
     const rawResponse = await fetch(urlSign,{
       method: 'POST',

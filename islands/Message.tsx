@@ -8,7 +8,7 @@ import { h, Fragment } from "preact";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { useState } from "preact/hooks";
 
-export default function PageGroupMessage() {
+export default function Page() {
   const [count, setCount] = useState(0);
 
   if(IS_BROWSER){
@@ -23,7 +23,10 @@ export default function PageGroupMessage() {
 
   return (
     <Fragment>
-      <label>Group Message</label>
+      <label>Blank</label>
+      <div>
+        
+      </div>
       <button onClick={()=>btntest()} > Testing...</button>
     </Fragment>
   );

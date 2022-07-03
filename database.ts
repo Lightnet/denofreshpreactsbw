@@ -1,3 +1,8 @@
+/*
+  License: MIT
+  Created by: Lightnet
+*/
+
 // https://github.com/denoland/fresh/issues/235
 // https://deno.land/x/mongo@v0.30.1
 // https://thecodebarbarian.com/working-with-mongoose-in-typescript.html
@@ -5,7 +10,6 @@
 // 
 // 
 // 
-
 
 import { config } from "https://deno.land/x/dotenv@v3.2.0/mod.ts";
 import { MongoClient } from "https://deno.land/x/mongo@v0.30.1/mod.ts";
@@ -44,9 +48,29 @@ interface MessageSchema {
 }
 const Message = Database.collection<MessageSchema>("message");
 
+interface ContactSchema {
+  _id: { $oid: string };
+  userID: string;
+  friendID: string;
+  status: string;
+  created: number;
+}
+const Contact = Database.collection<ContactSchema>("contact");
+
+interface GroupMessageSchema {
+  _id: { $oid: string };
+  groupMessageID: string;
+  userID: string;
+  content: string;
+  created: number;
+}
+const GroupMessage = Database.collection<GroupMessageSchema>("groupmessage");
+
 export { 
   Database, 
   User, 
-  Message 
+  Message,
+  Contact,
+  GroupMessage,
 };
 console.log("init database!")

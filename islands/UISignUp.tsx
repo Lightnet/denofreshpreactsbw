@@ -1,3 +1,8 @@
+/*
+  License: MIT
+  Created by: Lightnet
+*/
+
 /** @jsx h */
 import { h } from "preact";
 import { useState } from "preact/hooks";
@@ -28,7 +33,7 @@ export default function UISignup() {
 
   async function btnRegister(){
     console.log("register")
-    const urlSign = `/api/signup`;
+    const urlSign = `/api/auth/signup`;
     //const urlSign = `/auth/signup`;
     const rawResponse:any = await fetch(urlSign,{
       method: 'POST',

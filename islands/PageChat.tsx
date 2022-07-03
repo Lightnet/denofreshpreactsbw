@@ -1,11 +1,13 @@
+/*
+  License: MIT
+  Created by: Lightnet
+*/
+
 /** @jsx h */
 import { h, Fragment } from "preact";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { useState } from "preact/hooks";
-
 import { WebSocketClient, StandardWebSocketClient } from "https://deno.land/x/websocket@v0.1.4/mod.ts";
-
-
 
 export default function PageChat() {
   const [count, setCount] = useState(0);

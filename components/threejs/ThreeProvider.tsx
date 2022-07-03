@@ -1,4 +1,7 @@
-
+/*
+  License: MIT
+  Created by: Lightnet
+*/
 
 // https://codesandbox.io/examples/package/preact-context
 // https://codesandbox.io/s/l909km2p5z?file=/src/index.js:211-225

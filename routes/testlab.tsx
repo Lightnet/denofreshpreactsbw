@@ -1,4 +1,10 @@
+/*
+  License: MIT
+  Created by: Lightnet
 
+  Information:
+    Test Lab Area
+*/
 
 /** @jsx h */
 import { h, Fragment } from "preact";

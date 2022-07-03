@@ -1,5 +1,12 @@
 /*
-  This is index page or home page.
+  License: MIT
+  Created by: Lightnet
+  
+  Information: 
+    This is index page or home page.
+*/
+/*
+  
 */
 
 // https://fresh.deno.dev/docs/getting-started/form-submissions

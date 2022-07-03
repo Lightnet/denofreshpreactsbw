@@ -1,5 +1,6 @@
 {
   "imports": {
+    "axiod": "https://deno.land/x/axiod/mod.ts",
     "three": "https://esm.sh/three@0.142.0",
     "three/": "https://esm.sh/three@0.142.0/",
     "$fresh/": "https://deno.land/x/fresh@1.0.0/",

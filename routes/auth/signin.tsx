@@ -1,16 +1,18 @@
+/*
+
+  Information: Need to prevent retry spam.
+*/
+
 /** @jsx h */
-import { h } from "preact";
-import { useState } from "preact/hooks";
+import { h ,Fragment} from "preact";
+//import { useState } from "preact/hooks";
 import UISignIn from "../../islands/UISignIn.tsx";
 
 export default function SignIn() {
 
   return (
-    <div>
-      <p>
-        Sign In Page
-      </p>
+    <Fragment>
       <UISignIn/>
-    </div>
+    </Fragment>
   );
 }

@@ -1,5 +1,7 @@
-
-
+/*
+  License: MIT
+  Created by: Lightnet
+*/
 
 /** @jsx h */
 import { h } from "preact";
@@ -32,7 +34,7 @@ export default function UILogin() {
 
   async function btnLogin(){
     console.log("sign in")
-    const urlSign = `/api/signin`;
+    const urlSign = `/api/auth/signin`;
     //const urlSign = `/auth/signup`;
     console.log(passphrase);
     const rawResponse = await fetch(urlSign,{

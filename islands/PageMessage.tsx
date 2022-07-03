@@ -1,7 +1,15 @@
+/*
+  License: MIT
+  Created by: Lightnet
+*/
+
 /** @jsx h */
 import { h, Fragment } from "preact";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { useState } from "preact/hooks";
+import MessageInbox from "./MessageInbox.tsx";
+import MessageCompose from "./MessageCompose.tsx";
+import Message from "./Message.tsx";
 
 export default function PageMessage() {
   const [count, setCount] = useState(0);
@@ -27,13 +35,13 @@ export default function PageMessage() {
       </div>
       <div>
         {view === 'inbox' && <Fragment>
-          <label>Inbox</label>
+          <MessageInbox/>
           </Fragment>}
         {view === 'compose' && <Fragment>
-          <label>compose</label>
+          <MessageCompose/>
           </Fragment>}
         {view === 'message' && <Fragment>
-          <label>message</label>
+          <Message/>
           </Fragment>}
         {view === 'settings' && <Fragment>
           <label>settings</label>

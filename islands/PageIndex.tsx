@@ -1,3 +1,8 @@
+/*
+  License: MIT
+  Created by: Lightnet
+*/
+
 /** @jsx h */
 import { h, Fragment, Component } from "preact";
 import { IS_BROWSER } from "$fresh/runtime.ts";

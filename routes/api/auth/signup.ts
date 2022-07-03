@@ -5,7 +5,7 @@
 // https://deno.land/x/bcrypt@v0.2.4
 
 import { HandlerContext } from "$fresh/server.ts";
-import { User } from "../../database.ts"
+import { User } from "../../../database.ts"
 import * as bcrypt from "https://deno.land/x/bcrypt/mod.ts";
 
 export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Response> => {
