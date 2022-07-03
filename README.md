@@ -54,6 +54,7 @@
 - deno.json ( simalar to npm cmd )
 - dev.ts ( server set up / fresh)
 - fresh.gen.ts ( fresh / generated )
+- import_map.json ( fresh / packages )
 - main.ts ( fresh / config )
 - options.ts ( fresh options )
 
@@ -65,16 +66,41 @@
 ```
   ./routes/index.tsx
 ```
-  This is for server and client. But note that the onclick event does not work since it server side render. Used island to handle client side.
+  This is for server side render page document. Example http://localhost:3000 > index.tsx. But note that the onclick event does not work since it server side render. You can use form to submit button. Used island folder to handle client side. 
 
-  This set up the url page application format to keep it simple.
+  There is handle function call to able to use http request that check for headers and pass to repsonse to the browser client.
 
-  It set up the page with server handle request and prcoess like check query user and cookie if exist that reflect the page changes or access.
+  It set up the route name page with server handle request and process like query get/post and cookie if exist that reflect the page changes or access.
 
 ```
   ./island/PageIndex.tsx
 ```
-  This is for client side. Fresh have check browser or ssr.
+  This is for client side component for browser used. But note the ssr and client call from page to sent to browser client.
+
+```ts
+import { IS_BROWSER } from "$fresh/runtime.ts";
+```
+Use this to handle check for ssr and browser.
+
+# import_map.json 
+```json
+{
+  "imports": {
+    "axiod": "https://deno.land/x/axiod/mod.ts",
+    "three": "https://esm.sh/three@0.142.0",
+    "three/": "https://esm.sh/three@0.142.0/",
+    "$fresh/": "https://deno.land/x/fresh@1.0.0/",
+    "preact": "https://esm.sh/preact@10.8.1",
+    "preact/": "https://esm.sh/preact@10.8.1/",
+    "preact-render-to-string": "https://esm.sh/preact-render-to-string@5.2.0?deps=preact@10.8.1"
+  }
+}
+```
+This handle import files for ts to reuse without need to edit which version of each files added in script file.
+```ts
+import { h, Fragment } from "preact";
+import { Head, asset, IS_BROWSER  } from "$fresh/runtime.ts";
+```
 
 # set up:
   Install deno https://fresh.deno.dev/
