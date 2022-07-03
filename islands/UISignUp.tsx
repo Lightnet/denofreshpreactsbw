@@ -51,6 +51,11 @@ export default function UISignup() {
     //const content:any = await rawResponse.json();
   }
 
+  function btnCancel(){
+    console.log("Cancel")
+    location.assign("/");
+  }
+
   return (
     <div>
       <table>
@@ -73,7 +78,7 @@ export default function UISignup() {
           </tr>
           <tr>
             <td>
-              <label> EMail: </label>
+              <label> Email: </label>
             </td>
             <td>
               <input value={email} onInput={inputEmail}/>
@@ -82,17 +87,19 @@ export default function UISignup() {
 
           <tr>
             <td colSpan={2}>
-              <button onClick={() => btnRegister()}>
+              
+              <span>  </span>
+              <a href="/auth/signin">Sign In</a>
+              <span> | </span>
+              <a href="/auth/forgot">Forgot</a>
+              <span> | </span>
+              <button onClick={() => btnRegister()}  disabled={!IS_BROWSER}>
                 Submit
               </button>
               <span> </span>
-              <button onClick={() => btnRegister()}>
+              <button onClick={() => btnCancel()}  disabled={!IS_BROWSER}>
                 Cancel
               </button>
-              <span>  </span>
-              <a href="/auth/signin">Login</a>
-              <span> | </span>
-              <a href="/auth/forgot">Forgot</a>
 
             </td>
           </tr>

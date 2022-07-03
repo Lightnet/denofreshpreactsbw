@@ -8,6 +8,7 @@ import { h, Fragment } from "preact";
 import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import ButtonAxiod from "./ButtonAxiod.tsx"
+import ButtonAxiodRefresh from "./ButtonAxiodRefresh.tsx"
 
 export default function PageTestLab() {
 
@@ -23,8 +24,11 @@ export default function PageTestLab() {
   return (
     <Fragment>
       <div id={canvasID} style="height:100vh;width:100%;">
-
-      <ButtonAxiod />
+      <label> Test Lab </label>
+      <div>
+        <ButtonAxiod />
+        <ButtonAxiodRefresh />
+      </div>
       </div>
     </Fragment>
   );

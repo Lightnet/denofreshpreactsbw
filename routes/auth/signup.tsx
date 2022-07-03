@@ -6,7 +6,7 @@
 /** @jsx h */
 import { h, Fragment } from "preact";
 import { useState } from "preact/hooks";
-import { IS_BROWSER } from "$fresh/runtime.ts";
+import { Head, asset, IS_BROWSER } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import UISignUp from "../../islands/UISignUp.tsx"
 
@@ -15,9 +15,9 @@ import UISignUp from "../../islands/UISignUp.tsx"
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    console.log("GET?")
+    //console.log("GET?")
     const resp = await ctx.render();
-    resp.headers.set("X-Custom-Header", "Hello");
+    //resp.headers.set("X-Custom-Header", "Hello");
     return resp;
   },
 };
@@ -29,6 +29,10 @@ export default function SignUp() {
 
   return (
     <Fragment>
+      <Head>
+        <title>Sign Up</title>
+        <link rel="stylesheet" href={asset("/styles.css")}></link>
+      </Head>
       <UISignUp/>
     </Fragment>
   );

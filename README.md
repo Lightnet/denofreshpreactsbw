@@ -28,8 +28,11 @@
   - signin ( added )
   - signup ( added )
   - signout ( added )
-  - forgot
-  - token
+  - forgot ( wip )
+  - token ( added )
+  - jwt ( added )
+  - refresh ( wip )
+  - 
 - threejs
   - simple scene ( added )
   - editor ( wip )

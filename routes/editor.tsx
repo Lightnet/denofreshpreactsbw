@@ -11,9 +11,9 @@ import PageEditor  from "../islands/PageEditor.tsx";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    console.log("editor");
+    //console.log("editor");
     const resp = await ctx.render();
-    resp.headers.set("X-Custom-Header", "Hello");
+    //resp.headers.set("X-Custom-Header", "Hello");
     return resp;
   },
 };

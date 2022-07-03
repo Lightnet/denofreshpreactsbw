@@ -11,9 +11,9 @@ import { Head } from "$fresh/runtime.ts";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    //console.log("index, hello world!");
+    //console.log("Threejs");
     const resp = await ctx.render();
-    resp.headers.set("X-Custom-Header", "Hello");
+    //resp.headers.set("X-Custom-Header", "Hello");
     return resp;
   },
 };

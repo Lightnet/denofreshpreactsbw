@@ -10,9 +10,9 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import PageGroupMessage from "../islands/PageGroupMessage.tsx"
 export const handler: Handlers = {
   async GET(req, ctx) {
-    console.log("editor");
+    //console.log("GroupMessage");
     const resp = await ctx.render();
-    resp.headers.set("X-Custom-Header", "Hello");
+    //resp.headers.set("X-Custom-Header", "Hello");
     return resp;
   },
 };

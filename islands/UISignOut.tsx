@@ -21,7 +21,7 @@ export default function UILogin() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        alias:"guest",
+        alias:"Guest",
       })
       
     });
@@ -46,9 +46,9 @@ export default function UILogin() {
           <tr>
             <td colSpan={2}>
               <a href="/">Home</a>
-              <span> </span>
+              <span> | </span>
               <button onClick={() => btnLogOut()} disabled={!IS_BROWSER}>
-                Log Out
+                Logout
               </button>
             </td>
           </tr>

@@ -18,9 +18,14 @@ import { h, Fragment } from "preact";
 import { Head, asset, IS_BROWSER  } from "$fresh/runtime.ts";
 // import { asset, Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { deleteCookie, setCookie, getCookies } from "https://deno.land/std/http/cookie.ts";
-import {encode, decode} from "https://deno.land/std/encoding/base64.ts";
+import { 
+  //deleteCookie, 
+  //setCookie, 
+  getCookies 
+} from "https://deno.land/std/http/cookie.ts";
+//import {encode, decode} from "https://deno.land/std/encoding/base64.ts";
 import PageIndex from "../islands/PageIndex.tsx"
+import { genKey, checkJWT} from "../libs/helper.ts";
 
 interface Data {
   isLogin: boolean;
@@ -28,22 +33,26 @@ interface Data {
 }
 
 export const handler: Handlers<Data> = {
-  GET(_req, ctx) {
+  async GET(_req, ctx) {
     let isLogin = false;
     let userName = "Guest";
 
     const cookies = getCookies(_req.headers);
     //console.log(cookies)
     if(cookies.token){
-      //console.log("cookies.token")
-      //console.log(cookies.token)
-      //const token = decode(cookies.token);
-      const token = new TextDecoder().decode(decode(cookies.token));
-      //console.log("token")
-      //console.log(token)
-      const user = JSON.parse(token)
-      userName = user.alias;
-      isLogin=true;
+      const key=await genKey("06e594c9-a772-4d59-a4fb-72d772d6279a");
+      console.log("cookies.token")
+      console.log(cookies.token)
+
+      const token = await checkJWT(key,cookies.token)
+      if(token){
+        console.log("VALIDTOKEN")
+        userName=token.alias;
+        isLogin=true;
+      }else{
+        console.log("INVALIDTOKEN")
+        //clear cookie token
+      }
     }
     
     return ctx.render({ isLogin, userName });
@@ -55,7 +64,7 @@ export default function Home({ data }: PageProps<Data>) {
   const {isLogin, userName} = data;
 
   if(IS_BROWSER){
-    console.log("client")
+    console.log("BROWSER")
   }else{
     console.log("SSR")
   }

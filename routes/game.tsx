@@ -11,9 +11,9 @@ import PageGame  from "../islands/PageGame.tsx";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    console.log("editor");
+    //console.log("game");
     const resp = await ctx.render();
-    resp.headers.set("X-Custom-Header", "Hello");
+    //resp.headers.set("X-Custom-Header", "Hello");
     return resp;
   },
 };

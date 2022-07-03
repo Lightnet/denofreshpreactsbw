@@ -60,6 +60,11 @@ export default function UILogin() {
 
   }
 
+  function btnCancel(){
+    console.log("Cancel")
+    location.assign("/");
+  }
+
   return (
     <div>
       <table>
@@ -83,19 +88,19 @@ export default function UILogin() {
 
           <tr>
             <td colSpan={2}>
+              <a href="/">Home</a>
+              <span> | </span>
+              <a href="/auth/signup">Register</a>
+              <span> | </span>
+              <a href="/auth/forgot">Forgot</a>
+              <span> | </span>
               <button onClick={() => btnLogin()} disabled={!IS_BROWSER}>
                 Login
               </button>
               <span> </span>
-              <button onClick={() => btnLogin()} disabled={!IS_BROWSER}>
+              <button onClick={() => btnCancel()} disabled={!IS_BROWSER}>
                 Cancel
               </button>
-              <a href="/">Home</a>
-              <span>  </span>
-              <a href="/auth/signup">Register</a>
-              <span> | </span>
-              <a href="/auth/forgot">Forgot</a>
-
             </td>
           </tr>
         </tbody>

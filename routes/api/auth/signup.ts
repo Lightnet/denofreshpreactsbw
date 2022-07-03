@@ -1,3 +1,7 @@
+/*
+  License: MIT
+  Created by: Lightnet
+*/
 
 // https://fresh.deno.dev/docs/getting-started/fetching-data
 // https://deno.land/x/mongo@v0.30.1
@@ -11,10 +15,13 @@ import * as bcrypt from "https://deno.land/x/bcrypt/mod.ts";
 export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Response> => {
 
   console.log("Sign Up!")
+  //console.log(_req);
   if(_req.method === "POST"){
     console.log("POST!")
-    console.log(_req);
     //console.log(_ctx);
+  }else{
+    const body1 = JSON.stringify({api:'NOTPOST'});
+    return new Response(body1);
   }
   //convert string to json
   const data = await _req.json(); //json post

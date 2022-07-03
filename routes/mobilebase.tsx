@@ -11,9 +11,9 @@ import PageMobileBase from "../islands/PageMobileBase.tsx";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    console.log("editor");
+    //console.log("MobileBase");
     const resp = await ctx.render();
-    resp.headers.set("X-Custom-Header", "Hello");
+    //resp.headers.set("X-Custom-Header", "Hello");
     return resp;
   },
 };

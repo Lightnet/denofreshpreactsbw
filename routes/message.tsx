@@ -11,9 +11,9 @@ import PageMessage from "../islands/PageMessage.tsx"
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    console.log("editor");
+    //console.log("Message");
     const resp = await ctx.render();
-    resp.headers.set("X-Custom-Header", "Hello");
+    //resp.headers.set("X-Custom-Header", "Hello");
     return resp;
   },
 };

@@ -18,7 +18,7 @@ export default function PageIndex({isLogin, userName}:childrenProps) {
   const [count, setCount] = useState(0);
 
   if(IS_BROWSER){
-    console.log("CLIENT")
+    console.log("BROWSER")
   }else{
     console.log("SERVER")
   }
