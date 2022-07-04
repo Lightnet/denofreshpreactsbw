@@ -31,6 +31,7 @@ export default function PageIndex({isLogin, userName}:childrenProps) {
       {isLogin === true && <Fragment>
         <a href="/threejs">Threejs</a> <span> </span>
         <a href="/editor">Editor</a> <span> </span>
+        <a href="/contact">Contact</a> <span> </span>
         <a href="/message">Message</a> <span> </span>
         <a href="/groupmessage">Group Message</a> <span> </span>
         <a href="/game">Game</a> <span> </span>

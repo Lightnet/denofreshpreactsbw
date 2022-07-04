@@ -7,26 +7,25 @@
 import { h, Fragment } from "preact";
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import PageContact from "../islands/PageContact.tsx"
 
 export const handler: Handlers = {
   async GET(req, ctx) {
-    console.log("settings");
+    console.log("contact");
     const resp = await ctx.render();
     //resp.headers.set("X-Custom-Header", "Hello");
     return resp;
   },
 };
 
-export default function Settings() {
+export default function Contact() {
   return (
     <Fragment>
       <Head>
-        <title>Game</title>
+        <title>Contact</title>
         <link rel="stylesheet" href="./styles.css"></link>
       </Head>
-      <div>
-        <button> Theme </button> 
-      </div>      
+      <PageContact/>
     </Fragment>
   );
 }

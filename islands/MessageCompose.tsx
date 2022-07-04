@@ -7,6 +7,7 @@
 import { h, Fragment } from "preact";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { useState } from "preact/hooks";
+import { axiodapi } from "../libs/query.ts"
 
 export default function Page() {
   const [count, setCount] = useState(0);
@@ -14,6 +15,24 @@ export default function Page() {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
   const [userID, setUserID] = useState("");
+
+  function inputUserID(e:Event){
+    if (e.target instanceof HTMLInputElement) {
+      setUserID(e.target.value);
+    }
+  }
+
+  function inputSubject(e:Event){
+    if (e.target instanceof HTMLInputElement) {
+      setSubject(e.target.value);
+    }
+  }
+
+  function inputContent(e:Event){
+    if (e.target instanceof HTMLTextAreaElement) {
+      setContent(e.target.value);
+    }
+  }
 
   if(IS_BROWSER){
     console.log("CLIENT")
@@ -23,18 +42,24 @@ export default function Page() {
 
   function btnSent(){
     console.log("Hello World")
+    axiodapi.post("/message",{
+      api:"SEND",
+      alias:userID,
+      subject:subject,
+      content:content,
+    })
   }
 
   return (
     <Fragment>
       <table>
         <tbody>
-        <tr>
+          <tr>
             <td>
               <label>To</label>
             </td>
             <td>
-              <input type="text" />
+              <input type="text" value={userID} onInput={inputUserID}/>
             </td>
           </tr>
 
@@ -43,7 +68,7 @@ export default function Page() {
               <label>Subject</label>
             </td>
             <td>
-              <input type="text" />
+              <input type="text" value={subject} onInput={inputSubject}/>
             </td>
           </tr>
 
@@ -52,7 +77,7 @@ export default function Page() {
               <label>Content</label>
             </td>
             <td>
-              <textarea />
+              <textarea value={content} onInput={inputContent}/>
             </td>
           </tr>
 
@@ -67,9 +92,7 @@ export default function Page() {
 
         </tbody>
       </table>
-      
 
-      
     </Fragment>
   );
 }

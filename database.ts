@@ -9,7 +9,6 @@
 // https://deno.land/x/mongo@v0.13.0/EXAMPLES.md
 // 
 // 
-// 
 
 import { config } from "https://deno.land/x/dotenv@v3.2.0/mod.ts";
 import { MongoClient } from "https://deno.land/x/mongo@v0.30.1/mod.ts";
@@ -52,6 +51,7 @@ interface ContactSchema {
   _id: { $oid: string };
   userID: string;
   friendID: string;
+  friendName: string;
   status: string;
   created: number;
 }
@@ -60,11 +60,21 @@ const Contact = Database.collection<ContactSchema>("contact");
 interface GroupMessageSchema {
   _id: { $oid: string };
   groupMessageID: string;
+  isDelete: boolean;
   userID: string;
   content: string;
   created: number;
 }
 const GroupMessage = Database.collection<GroupMessageSchema>("groupmessage");
+
+interface ChatMessageSchema {
+  _id: { $oid: string };
+  chatID: string;
+  userID: string;
+  content: string;
+  created: number;
+}
+const ChatMessage = Database.collection<ChatMessageSchema>("chatmessage");
 
 export { 
   Database, 
@@ -72,5 +82,6 @@ export {
   Message,
   Contact,
   GroupMessage,
+  ChatMessage,
 };
 console.log("init database!")
