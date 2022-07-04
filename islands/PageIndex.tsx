@@ -5,8 +5,8 @@
 
 /** @jsx h */
 import { h, Fragment, Component } from "preact";
-import { IS_BROWSER } from "$fresh/runtime.ts";
-import { useState } from "preact/hooks";
+//import { IS_BROWSER } from "$fresh/runtime.ts";
+//import { useState } from "preact/hooks";
 import ButtonTheme from "./ButtonTheme.tsx"
 
 type childrenProps={
@@ -15,13 +15,13 @@ type childrenProps={
 }
 
 export default function PageIndex({isLogin, userName}:childrenProps) {
-  const [count, setCount] = useState(0);
+  //const [count, setCount] = useState(0);
 
-  if(IS_BROWSER){
-    console.log("BROWSER")
-  }else{
-    console.log("SERVER")
-  }
+  //if(IS_BROWSER){
+    //console.log("BROWSER")
+  //}else{
+    //console.log("SERVER")
+  //}
 
   //<ButtonTheme/>
   return (
@@ -29,6 +29,7 @@ export default function PageIndex({isLogin, userName}:childrenProps) {
       <ButtonTheme/>
       <p> Welcome {userName}, to Deno and Fresh API </p> 
       {isLogin === true && <Fragment>
+        <a href="/account">Account</a> <span> </span>
         <a href="/threejs">Threejs</a> <span> </span>
         <a href="/editor">Editor</a> <span> </span>
         <a href="/contact">Contact</a> <span> </span>

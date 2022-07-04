@@ -10,7 +10,7 @@
 // 
 // 
 
-import { config } from "https://deno.land/x/dotenv@v3.2.0/mod.ts";
+import { config } from "dotenv";
 import { MongoClient } from "https://deno.land/x/mongo@v0.30.1/mod.ts";
 
 const client = new MongoClient();
@@ -37,6 +37,7 @@ const User = Database.collection<UserSchema>("user");
 
 interface MessageSchema {
   _id: { $oid: string };
+  id: string;
   recipientID: string;
   recipient: string;// a person or thing that receives or is awarded something.
   userID: string;

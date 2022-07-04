@@ -12,11 +12,12 @@
 import { HandlerContext } from "$fresh/server.ts";
 import { User } from "../../../database.ts"
 import { setCookie } from "https://deno.land/std/http/cookie.ts";
-import {encode, decode} from "https://deno.land/std/encoding/base64.ts";
+//import {encode, decode} from "https://deno.land/std/encoding/base64.ts";
 import * as bcrypt from "https://deno.land/x/bcrypt/mod.ts";
 import {genKey,getJWT} from "../../../libs/helper.ts"
+import { config } from "dotenv";
 
-
+const { TOKENKEY } = config();
 
 export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Response> => {
   
@@ -40,7 +41,7 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Resp
 
     if(result==true){
       console.log(crypto.randomUUID())
-      const key = await genKey("06e594c9-a772-4d59-a4fb-72d772d6279a");
+      const key = await genKey(TOKENKEY);
       console.log(Date.now())
       const tokenData = {
         uuid: crypto.randomUUID(),

@@ -10,6 +10,7 @@ import { useState } from "preact/hooks";
 import MessageInbox from "./MessageInbox.tsx";
 import MessageCompose from "./MessageCompose.tsx";
 import Message from "./Message.tsx";
+import NavMenu from "./NavMenu.tsx"
 
 export default function PageMessage() {
   const [count, setCount] = useState(0);
@@ -26,7 +27,8 @@ export default function PageMessage() {
   }
 
   return (
-    <Fragment>
+    <div>
+      <NavMenu/>
       <div>
         <label>Message</label>
         <button onClick={()=>clickView('inbox')}> Inbox </button>
@@ -48,6 +50,6 @@ export default function PageMessage() {
           </Fragment>}
       </div>
 
-    </Fragment>
+    </div>
   );
 }

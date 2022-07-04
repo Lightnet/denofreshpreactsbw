@@ -9,6 +9,7 @@ import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import ButtonAxiod from "./ButtonAxiod.tsx"
 import ButtonAxiodRefresh from "./ButtonAxiodRefresh.tsx"
+import NavMenu from "./NavMenu.tsx"
 
 export default function PageTestLab() {
 
@@ -22,7 +23,8 @@ export default function PageTestLab() {
   }
 
   return (
-    <Fragment>
+    <div>
+      <NavMenu/>
       <div id={canvasID} style="height:100vh;width:100%;">
       <label> Test Lab </label>
       <div>
@@ -30,6 +32,6 @@ export default function PageTestLab() {
         <ButtonAxiodRefresh />
       </div>
       </div>
-    </Fragment>
+    </div>
   );
 }

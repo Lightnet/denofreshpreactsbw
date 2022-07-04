@@ -7,11 +7,15 @@ import { HandlerContext } from "$fresh/server.ts";
 import { Contact, User } from "../../database.ts"
 import { genKey, checkJWT} from "../../libs/helper.ts";
 import { getCookies } from "https://deno.land/std/http/cookie.ts";
+import { config } from "dotenv";
+
+const { TOKENKEY } = config();
+
 export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Response> => {
 
   //check token
   const cookies = getCookies(_req.headers);
-  const key = await genKey("06e594c9-a772-4d59-a4fb-72d772d6279a");
+  const key = await genKey(TOKENKEY);
   const token = await checkJWT(key,cookies.token)
   let userID = "";
 

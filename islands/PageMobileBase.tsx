@@ -7,7 +7,7 @@
 import { h, Fragment } from "preact";
 import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
-
+import NavMenu from "./NavMenu.tsx"
 
 export default function PageMobileBase() {
 
@@ -21,10 +21,11 @@ export default function PageMobileBase() {
   }
 
   return (
-    <Fragment>
+    <div>
+      <NavMenu/>
       <div id={canvasID} style="height:100vh;width:100%;">
         <label> Hello World! Mobile Base. </label>
       </div>
-    </Fragment>
+    </div>
   );
 }

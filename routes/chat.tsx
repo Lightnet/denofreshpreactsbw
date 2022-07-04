@@ -19,7 +19,7 @@ export const handler: Handlers = {
     //resp.headers.set("X-Custom-Header", "Hello");
     //return resp;
 
-    const {socket: ws} = Deno.upgradeWebSocket(req);
+    //const {socket: ws} = Deno.upgradeWebSocket(req);
     //ws.onmessage=m=>ws.send(m.data);
     return resp;
   },

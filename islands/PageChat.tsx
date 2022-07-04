@@ -8,14 +8,20 @@ import { h, Fragment } from "preact";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { useState } from "preact/hooks";
 import { WebSocketClient, StandardWebSocketClient } from "https://deno.land/x/websocket@v0.1.4/mod.ts";
+import NavMenu from "./NavMenu.tsx"
 
 export default function PageChat() {
-  const [count, setCount] = useState(0);
+  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState([]);
   const endpoint = "ws://localhost:3000";
 
   if(IS_BROWSER){
     console.log("CLIENT")
-    
+  }else{
+    console.log("SERVER")
+  }
+
+  function initChat(){
     const ws: WebSocketClient = new StandardWebSocketClient(endpoint);
     ws.on("open", function() {
       console.log("ws connected!");
@@ -24,18 +30,20 @@ export default function PageChat() {
     ws.on("message", function (message: string) {
       console.log(message);
     });
-  }else{
-    console.log("SERVER")
   }
 
-  function btntest(){
+  function sendChatMessage(){
     console.log("Hello World")
   }
 
   return (
-    <Fragment>
+    <div>
+      <NavMenu/>
+      <div>
       <label>Chat</label>
-      <button onClick={()=>btntest()} > Testing...</button>
-    </Fragment>
+      <input />
+      <button onClick={()=>sendChatMessage()} > Submit</button>
+      </div>
+    </div>
   );
 }

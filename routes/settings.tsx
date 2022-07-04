@@ -7,6 +7,7 @@
 import { h, Fragment } from "preact";
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import PageSettings from "../islands/PageSettings.tsx"
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -24,9 +25,7 @@ export default function Settings() {
         <title>Game</title>
         <link rel="stylesheet" href="./styles.css"></link>
       </Head>
-      <div>
-        <button> Theme </button> 
-      </div>      
+      <PageSettings/>      
     </Fragment>
   );
 }

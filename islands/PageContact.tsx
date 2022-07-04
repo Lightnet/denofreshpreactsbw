@@ -8,9 +8,15 @@ import { h, Fragment } from "preact";
 //import { IS_BROWSER } from "$fresh/runtime.ts";
 import { useState, useEffect } from "preact/hooks";
 import { axiodapi } from "../libs/query.ts"
+import NavMenu from "./NavMenu.tsx"
+
+type Contact={
+  _id:string;
+  friendName:string;
+}
 
 export default function Page() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState<Contact[]>([]);
   const [alias, setAlias] = useState("");
 
   function inputAlias(e:Event){
@@ -52,15 +58,22 @@ export default function Page() {
         //setContacts(response?.data?.contacts)
         //need to fix later?
         console.log(response?.data)
-        let friendname =response?.data.friendName;
-        let id =response?.data.id;
-        setContacts(state=>[
+        const friendname:string =response?.data.friendName;
+        const id:string =response?.data.id;
+        setContacts([...contacts,{
+          _id:id,
+          friendName:friendname
+        }])
+
+        /*
+        setContacts((state:any[])=>[
           ...state, 
           {
             _id:id,
             friendName:friendname
           }
         ])
+        */
       }
     })
     .catch( (error) => {
@@ -101,7 +114,7 @@ export default function Page() {
 
   return (
     <div>
-      
+      <NavMenu/>
       <label>Alias Contact:</label>
       <input type="text" value={alias} onInput={inputAlias}/>
 
