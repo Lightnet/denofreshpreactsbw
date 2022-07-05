@@ -9,11 +9,19 @@
 import { h } from "preact";
 import { useEffect, useState } from "preact/hooks";
 
-export default function ButtonEvent() {
+type childrenProps = {
+  testcall: ()=> void;
+  datatest?:string;
+}
+
+export default function ButtonCall(props:childrenProps) {
 
   function clickTest(e:Event){
     console.log(e)
     console.log("test")
+    if(typeof props.testcall === 'function'){
+      props.testcall();
+    }
   }
 
   useEffect(()=>{
@@ -24,6 +32,6 @@ export default function ButtonEvent() {
     };
   },[])
 
-  return <button onClick={clickTest}>Test</button>;
+  return <button onClick={clickTest}>Test CALL</button>;
 }
 

@@ -37,12 +37,15 @@
   - simple scene ( added )
   - editor ( wip )
   - game ( wip )
-- chat websocket ( on hold )
+- chat websocket ( simple / wip )
 - message ( wip )
 - group message ( wip )
 - contact ( wip )
 - mobilebase ( wip )
 - testlab ( testing components )
+
+# chat websocket:
+  Note work on simple chat websocket from demo example base on blog posted.
 
 
 # Layouts:

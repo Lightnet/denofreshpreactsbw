@@ -10,6 +10,7 @@ import { IS_BROWSER } from "$fresh/runtime.ts";
 import ButtonAxiod from "./ButtonAxiod.tsx"
 import ButtonAxiodRefresh from "./ButtonAxiodRefresh.tsx"
 import NavMenu from "./NavMenu.tsx"
+import ButtonCall from "./ButtonCall.tsx"
 
 export default function PageTestLab() {
 
@@ -22,6 +23,10 @@ export default function PageTestLab() {
     console.log("SERVER")
   }
 
+  function testCALL(){
+    console.log("child test?")
+  }
+
   return (
     <div>
       <NavMenu/>
@@ -30,6 +35,7 @@ export default function PageTestLab() {
       <div>
         <ButtonAxiod />
         <ButtonAxiodRefresh />
+        <ButtonCall testcall={testCALL} />
       </div>
       </div>
     </div>

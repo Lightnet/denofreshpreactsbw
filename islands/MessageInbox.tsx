@@ -11,17 +11,25 @@ import { useState, useEffect } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { axiodapi } from "../libs/query.ts"
 
-type Message={
+type TMessage={
   _id:string;
   id:string;
   alias:string;
   subject:string;
+  content:string;
 }
 
 export default function Page() {
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<TMessage[]>([
     //{id:0, name:"test",subject:"tests",content:"test??"}
   ]);
+
+  const [isMessage, setIsMessage] = useState(false);
+  const [messageID, setMessageID] = useState("");
+
+  const [alias, setAlias] = useState("");
+  const [subject, setSubject] = useState("");
+  const [content, setContent] = useState("");
 
   useEffect(()=>{
     console.log("init")
@@ -57,7 +65,16 @@ export default function Page() {
   }
 
   function viewMessage(id:string){
-    
+    setIsMessage(true);
+    setMessageID(id);
+    const msgData:TMessage = messages.find(item=>item.id==id) as TMessage;
+    console.log(msgData);
+    if(msgData){
+      setAlias(msgData?.alias)
+      setSubject(msgData?.subject)
+      setContent(msgData?.content)
+    }
+
   }
 
   function deleteMessage(id:string){
@@ -72,9 +89,8 @@ export default function Page() {
         console.log(response?.data?.id)
         //setMessages(response?.data?.messages)
         if(response?.data?.id){
-          setMessages(messages.filter((item:Message)=>item.id!=response.data.id))
+          setMessages(messages.filter((item:TMessage)=>item.id!=response.data.id))
         }
-        
       }
     })
     .catch( (error) => {
@@ -83,8 +99,20 @@ export default function Page() {
     })
   }
 
+
   return (
     <Fragment>
+      {isMessage == true ?(
+             <Fragment>
+              <div>
+                <label>Alias:</label>{alias}<br/>
+                <label>Subject:</label>{subject}<br/>
+                <label>Content:</label>{content}<br/>
+                <button onClick={()=>{deleteMessage(messageID);setIsMessage(false)}}> Delete </button>
+                <button onClick={()=>setIsMessage(false)}> Close </button>
+              </div>
+            </Fragment>
+          ):(
       <table>
         <tbody>
           <tr>
@@ -92,17 +120,21 @@ export default function Page() {
             <td> Subject: </td>
             <td> Actions: </td>
           </tr>
-          { messages.map((item:Message) => <tr key={item.id}>
+          {messages.map((item:TMessage) => 
+          <tr key={item.id}>  
             <td> {item.alias} </td>
             <td> {item.subject} </td>
             <td> 
               <button onClick={()=> viewMessage(item.id)}> View </button> 
               <button onClick={()=> deleteMessage(item.id)}> Delete </button> 
             </td>
-          </tr>)
-          }
+          </tr>)}
+          
+
         </tbody>
-      </table>
+        </table>
+        )}
+      
     </Fragment>
   );
 }

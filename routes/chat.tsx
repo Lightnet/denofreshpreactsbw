@@ -15,12 +15,14 @@ import PageChat  from "../islands/PageChat.tsx";
 export const handler: Handlers = {
   async GET(req, ctx) {
     //console.log("editor");
-    const resp = await ctx.render();
+    //const resp = await ctx.render();
     //resp.headers.set("X-Custom-Header", "Hello");
     //return resp;
 
     //const {socket: ws} = Deno.upgradeWebSocket(req);
     //ws.onmessage=m=>ws.send(m.data);
+
+    const resp = await ctx.render();
     return resp;
   },
 };

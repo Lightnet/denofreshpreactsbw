@@ -38,6 +38,31 @@ export class Context {
   }
 }
 
+//websocket handle
+function logError(msg: string) {
+  console.log(msg);
+  //Deno.exit(1);
+}
+//websocket handle
+function handleConnected() {
+  console.log("Connected to client ...");
+}
+//websocket handle
+function handleError(e: Event | ErrorEvent) {
+  console.log(e instanceof ErrorEvent ? e.message : e.type);
+}
+//websocket handle
+function handleMessage(ws: WebSocket, data: string) {
+  //console.log("CLIENT >> " + data);
+  //const reply = prompt("Server >> ") || "No reply";
+  //if (reply === "exit") {
+    //return ws.close();
+  //}
+  //ws.send(reply as string);
+  console.log("server ws:",data)
+  ws.send(data as string);
+}
+
 export async function handler(
   _req: Request,
   ctx: MiddlewareHandlerContext<State>,
@@ -54,6 +79,25 @@ export async function handler(
     //console.log(cookies.locale)
     //ctx.state.locales.push(cookies.locale);
   //}
+  //if(true){
+    //const myHeaders = new Headers({
+      //accept: "application/json",
+    //});
+    //return new Response("Hello World!",{headers:myHeaders})
+  //}
+
+  //chat message
+  //console.log(_req.headers.get("upgrade"))
+  if(_req.headers.get("upgrade")==="websocket"){
+    console.log("FOUND! upgrade")
+    console.log(_req.headers.get("upgrade"))
+    const { socket: ws, response } = Deno.upgradeWebSocket(_req);
+    ws.onopen = () => handleConnected();
+    ws.onmessage = (m) => handleMessage(ws, m.data);
+    ws.onclose = () => logError("Disconnected from client ...");
+    ws.onerror = (e) => handleError(e);
+    return response;
+  }
 
   ctx.state.context = Context.instance()
   const resp = await ctx.next();
