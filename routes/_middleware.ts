@@ -100,6 +100,7 @@ export async function handler(
   }
 
   ctx.state.context = Context.instance()
+  
   const resp = await ctx.next();
   return resp;
 }

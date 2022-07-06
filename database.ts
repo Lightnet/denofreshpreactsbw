@@ -77,6 +77,16 @@ interface ChatMessageSchema {
 }
 const ChatMessage = Database.collection<ChatMessageSchema>("chatmessage");
 
+interface NoteSchema {
+  _id: { $oid: string };
+  id: string;
+  userID: string;
+  content: string;
+  created: number;
+}
+const Note = Database.collection<NoteSchema>("note");
+
+
 export { 
   Database, 
   User, 
@@ -84,5 +94,6 @@ export {
   Contact,
   GroupMessage,
   ChatMessage,
+  Note,
 };
 console.log("init database!")

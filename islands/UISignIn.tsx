@@ -7,7 +7,6 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
-//import * as djwt from "https://deno.land/x/djwt@v2.7/mod.ts";
 
 export default function UILogin() {
   const [alias, setAlias] = useState("test");
@@ -57,14 +56,13 @@ export default function UILogin() {
         window.location.assign("/");
       }
     }
-
   }
 
   function btnCancel(){
     console.log("Cancel")
     location.assign("/");
   }
-
+  //<input value={alias}  onInput={(e:Event)=>{setAlias(e.target.value | "")}}/>
   return (
     <div>
       <table>

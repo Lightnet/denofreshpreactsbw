@@ -5,10 +5,11 @@
 
 # Packages:
 - deno https://fresh.deno.dev/ 
-- fresh https://deno.land/x/fresh@1.0.0/
-- preact https://esm.sh/preact@10.8.1
+- fresh https://deno.land/x/fresh@1.0.1/
+- preact https://esm.sh/preact@10.9.0
 - threejs https://esm.sh/three@0.142.0
 - mongodb https://deno.land/x/mongo@v0.30.1/mod.ts
+- axiod https://deno.land/x/axiod/mod.ts
 
 # Languages:
 - typescript (main)
@@ -17,11 +18,11 @@
 # Information:
   Sandbox World Testing.
 
-  Work in progress testing for threejs, Deno, Fresh and other typescript and javascript.
+  Work in progress testing for threejs, simple account, messages, database and other game or logic script. It for testing some basic web page interacting features.
 
-  Fresh http server have different way to handle page, island and other things simalar to nextjs. Note there different format from nodejs.
+  By using the Fresh framework built on top of Deno runtime for javascript, typescript, server side render (SSR) and preact component. Preact is kept very simple base on React javascript.
 
-  Deno is application to serve typescript and javascript.
+  Fresh http server have different way to handle routes page, island and other things simalar to nextjs and nodejs. But it still use javascript and typescript format. https://fresh.deno.dev
 
 # Features:
 - Account system
@@ -29,10 +30,10 @@
   - signup ( added )
   - signout ( added )
   - forgot ( wip )
-  - token ( added )
+  - token ( added / wip )
   - jwt ( added )
   - refresh ( wip )
-  - 
+  - cookie ( added / wip )
 - threejs
   - simple scene ( added )
   - editor ( wip )
@@ -41,12 +42,12 @@
 - message ( wip )
 - group message ( wip )
 - contact ( wip )
-- mobilebase ( wip )
-- testlab ( testing components )
+- mobile base ( wip )
+- test lab ( testing components )
+- to do list ( wip )
 
 # chat websocket:
   Note work on simple chat websocket from demo example base on blog posted.
-
 
 # Layouts:
 - .vscode ( vscode setting ext )
@@ -92,13 +93,15 @@ Use this to handle check for ssr and browser.
 ```json
 {
   "imports": {
+    "$std/": "https://deno.land/std@0.147.0/",
+    "dotenv": "https://deno.land/x/dotenv@v3.2.0/mod.ts",
     "axiod": "https://deno.land/x/axiod/mod.ts",
     "three": "https://esm.sh/three@0.142.0",
     "three/": "https://esm.sh/three@0.142.0/",
-    "$fresh/": "https://deno.land/x/fresh@1.0.0/",
-    "preact": "https://esm.sh/preact@10.8.1",
-    "preact/": "https://esm.sh/preact@10.8.1/",
-    "preact-render-to-string": "https://esm.sh/preact-render-to-string@5.2.0?deps=preact@10.8.1"
+    "$fresh/": "https://deno.land/x/fresh@1.0.1/",
+    "preact": "https://esm.sh/preact@10.9.0",
+    "preact/": "https://esm.sh/preact@10.9.0/",
+    "preact-render-to-string": "https://esm.sh/preact-render-to-string@5.2.0?deps=preact@10.9.0"
   }
 }
 ```
@@ -117,7 +120,8 @@ import { Head, asset, IS_BROWSER  } from "$fresh/runtime.ts";
 SUPABASE_URL=https://<id>.supabase.co
 SUPABASE_ANON_KEY=<key>
 DATABASE_URL=mongodb://127.0.0.1:27017
-
+TOKENKEY=
+REFRESHTOKENKEY=
 ```
 
 ## Command Line:
@@ -130,3 +134,5 @@ deno task start
  - https://fresh.deno.dev/
  - https://deno.land/
  - https://deno.com/blog/supabase-functions-on-deno-deploy
+ - https://esm.sh/
+ - https://deno.land/x

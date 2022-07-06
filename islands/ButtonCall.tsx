@@ -25,10 +25,10 @@ export default function ButtonCall(props:childrenProps) {
   }
 
   useEffect(()=>{
-    console.log("init...")
+    //console.log("init...")
     return () => {
       // Optional: Any cleanup code
-      console.log("clean up...")
+      //console.log("clean up...")
     };
   },[])
 

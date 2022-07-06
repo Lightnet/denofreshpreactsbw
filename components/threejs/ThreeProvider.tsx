@@ -14,10 +14,10 @@ import { useEffect, useState } from "preact/hooks";
 
 //import { createContext } from "https://esm.sh/v86/preact@10.8.1/src/index";
 
-export const ThreeContext = createContext({});
+export const ThreeContext = createContext({text:"test"});
 
 export class ThreeProvider extends Component{
-  state = {}
+  state = {text:"test"}
   //doSet = (name, value) => {
     //this.setState({ ...this.state, [name]: value })
   //}
@@ -26,7 +26,9 @@ export class ThreeProvider extends Component{
     const outVal = { ...value, ...this.state }
     //outVal.setGlobal = this.doSet
     return (
-      <ThreeContext.Provider value={outVal}>{children}</ThreeContext.Provider>
+      <ThreeContext.Provider value={outVal}>
+        {children}
+      </ThreeContext.Provider>
     )
   }
 }
