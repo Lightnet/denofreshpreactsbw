@@ -58,10 +58,10 @@
 - static ( fresh )
 - .env ( variables / keys )
 - database.ts ( mongodb )
-- deno.json ( simalar to npm cmd )
+- deno.json ( deno / simalar to npm cmd )
 - dev.ts ( server set up / fresh)
 - fresh.gen.ts ( fresh / generated )
-- import_map.json ( fresh / packages )
+- import_map.json ( fresh / deno / packages )
 - main.ts ( fresh / config )
 - options.ts ( fresh options )
 
