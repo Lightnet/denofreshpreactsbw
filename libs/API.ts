@@ -1,3 +1,7 @@
+/*
+  License: MIT
+  Created by: Lightnet
+*/
 
 const API={
   POST:"POST",

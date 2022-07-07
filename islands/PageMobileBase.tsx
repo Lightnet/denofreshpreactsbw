@@ -8,8 +8,8 @@ import { h, Fragment } from "preact";
 import { useState, useEffect, useContext } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import NavMenu from "./NavMenu.tsx"
-import CreateBase from "../components/mobilebase/CreateHomeBase.tsx"
-import HomeBase from "../components/mobilebase/HomeBase.tsx"
+import CreateBase from "../components/mobilebase/CreateMobileBase.tsx"
+import MobileBase from "../components/mobilebase/IndexMobileBase.tsx"
 import { axiodapi } from "../libs/queryapi.ts";
 import MobileBaseProvider,{ MobileBaseContext } from "../components/mobilebase/MobileBaseProvider.tsx"
 export default function PageMobileBase() {
@@ -65,7 +65,7 @@ export default function PageMobileBase() {
       <MobileBaseProvider baseInfo={baseInfo}>
         <div id={canvasID} style="height:100vh;width:100%;">
           {isCreated === true?(
-            <HomeBase/>
+            <MobileBase/>
           ):(
             <CreateBase onCreated={onCreateBase}/>
           )}

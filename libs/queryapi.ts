@@ -1,3 +1,12 @@
+/*
+  License: MIT
+  Created by: Lightnet
+
+  information:
+    This is for easy access to url when dealing with full url.
+
+*/
+
 import axiod from "axiod";
 // Interceptors
 // axiod.create([config]);

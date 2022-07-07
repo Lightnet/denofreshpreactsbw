@@ -1,3 +1,12 @@
+/*
+  License: MIT
+  Created by: Lightnet
+
+  Information:
+    Fresh api config
+
+*/
+
 /** @jsx h */
 import { h } from "preact";
 import { ErrorPageProps } from "$fresh/server.ts";

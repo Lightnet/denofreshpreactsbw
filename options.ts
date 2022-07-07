@@ -1,3 +1,12 @@
+/*
+  License: MIT
+  Created by: Lightnet
+
+  Information:
+    Fresh options
+
+*/
+
 // https://github.com/denoland/dotland/blob/main/options.ts
 
 import { 

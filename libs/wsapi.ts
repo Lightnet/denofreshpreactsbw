@@ -1,3 +1,8 @@
+/*
+  License: MIT
+  Created by: Lightnet
+*/
+
 //import { isWebSocketCloseEvent } from 'https://deno.land/std/ws/mod.ts';
 
 //console.log(_req.headers.get("upgrade"))

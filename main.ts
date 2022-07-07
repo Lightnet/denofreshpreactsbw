@@ -1,3 +1,12 @@
+/*
+  License: MIT
+  Created by: Lightnet
+
+  Information:
+    Init http server 
+
+*/
+
 // https://github.com/denoland/dotland/blob/main/main.ts#L48-L50
 // https://deno.land/x/fresh@1.0.0/tests/fixture/main.ts
 // https://discord.com/channels/684898665143206084/991511118524715139/993907158204813353
@@ -21,7 +30,7 @@ import options from "./options.ts";
 //await start(manifest, options);
 
 //let channel = new BroadcastChannel("channelName");//unstable build
-//console.log(crypto.randomUUID())
+
 //console.log(crypto.randomUUID())
 //alt server
 const ctx = await ServerContext.fromManifest(manifest, options);

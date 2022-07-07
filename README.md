@@ -20,7 +20,7 @@
 
   Work in progress testing for threejs, simple account, messages, database and other game or logic script. It for testing some basic web page interacting features.
 
-  By using the Fresh framework built on top of Deno runtime for javascript, typescript, server side render (SSR) and preact component. Preact is kept very simple base on React javascript.
+  By using the Fresh framework built on top of Deno runtime for javascript, typescript, server side render (SSR) and preact components. Preact is kept very simple base on React javascript.
 
   Fresh http server have different way to handle routes page, island and other things simalar to nextjs and nodejs. But it still use javascript and typescript format. https://fresh.deno.dev
 

@@ -1,6 +1,9 @@
 /*
+  License: MIT
+  Created by: Lightnet
 
-  Information: Need to prevent retry spam.
+  Information: 
+    Need to prevent retry spam.
 */
 
 /** @jsx h */
