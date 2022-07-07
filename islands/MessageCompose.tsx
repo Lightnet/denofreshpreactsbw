@@ -56,7 +56,7 @@ export default function Page() {
         <tbody>
           <tr>
             <td>
-              <label>To</label>
+              <label>To(Alias ID):</label>
             </td>
             <td>
               <input type="text" value={userID} onInput={inputUserID}/>

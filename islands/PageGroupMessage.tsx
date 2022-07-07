@@ -8,6 +8,7 @@ import { h, Fragment } from "preact";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { useState } from "preact/hooks";
 import NavMenu from "./NavMenu.tsx"
+import GroupSelection from "../components/groupmessage/GroupSelection.tsx"
 
 export default function PageGroupMessage() {
   const [count, setCount] = useState(0);
@@ -25,8 +26,11 @@ export default function PageGroupMessage() {
   return (
     <div>
       <NavMenu/>
-      <label>Group Message</label>
-      <button onClick={()=>btntest()} > Testing...</button>
+      <div>
+        <label>Group Message</label>
+      </div>
+      <GroupSelection/>
     </div>
   );
 }
+//<button onClick={()=>btntest()} > Testing...</button>

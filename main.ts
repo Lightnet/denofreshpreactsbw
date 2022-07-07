@@ -20,7 +20,10 @@ import options from "./options.ts";
 //await start(manifest, { port: 3000 });
 //await start(manifest, options);
 
+//let channel = new BroadcastChannel("channelName");//unstable build
+//console.log(crypto.randomUUID())
+//console.log(crypto.randomUUID())
 //alt server
 const ctx = await ServerContext.fromManifest(manifest, options);
-
-await serve(ctx.handler());
+console.log(Deno.version)
+await serve(ctx.handler(),{port:3000});

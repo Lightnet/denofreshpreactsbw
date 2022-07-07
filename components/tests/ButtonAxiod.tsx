@@ -6,7 +6,7 @@
 /** @jsx h */
 import { h } from "preact";
 import { useEffect, useState } from "preact/hooks";
-import { axiodapi } from "../libs/query.ts"
+import { axiodapi } from "../../libs/query.ts"
 
 export default function ButtonAxiod() {
 

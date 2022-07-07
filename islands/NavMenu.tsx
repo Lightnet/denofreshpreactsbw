@@ -13,6 +13,7 @@ export default function NavMenu() {
   return (
     <div>
       <a href="/account">Account</a> <span> </span>
+      <a href="/novel">Novel</a> <span> </span>
       <a href="/threejs">Threejs</a> <span> </span>
       <a href="/editor">Editor</a> <span> </span>
       <a href="/contact">Contact</a> <span> </span>

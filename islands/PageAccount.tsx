@@ -34,8 +34,18 @@ export default function PageAccount({isLogin, userName}:childrenProps) {
         <label>Account alias: {userName}</label>
       </div>
       <div>
-        <button onClick={btntest} > Testing...</button>
+        <div>
+          <button onClick={btntest} > Home</button>
+          <button onClick={btntest} > Change Passphrase</button>
+          <button onClick={btntest} > Forgot Hint</button>
+          <button onClick={btntest} > Settings</button>
+        </div>
+        <div>
+          <label> ... </label>
+        </div>
+        
       </div>
     </div>
   );
 }
+//<button onClick={btntest} > Testing...</button>

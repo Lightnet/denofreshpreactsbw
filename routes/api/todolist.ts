@@ -4,7 +4,7 @@
 */
 
 import { HandlerContext } from "$fresh/server.ts";
-import { deleteCookie, setCookie, getCookies } from "https://deno.land/std/http/cookie.ts";
+import { getCookies } from "https://deno.land/std/http/cookie.ts";
 import {Note} from "../../database.ts"
 import { genKey, checkJWT} from "../../libs/helper.ts"
 import { config } from "dotenv";
@@ -70,8 +70,7 @@ export const handler = async (req: Request, _ctx: HandlerContext): Promise<Respo
           id:data.id
         })
         console.log(countDelete)
-
-
+        
         const body = JSON.stringify({
           api:"DELETE",
           id:data.id
@@ -96,9 +95,4 @@ export const handler = async (req: Request, _ctx: HandlerContext): Promise<Respo
     });
     return new Response(body);
   }
-
-  const body = JSON.stringify({
-    text:"test"
-  });
-  return new Response(body);
 };

@@ -21,7 +21,7 @@ export default function AccessProvider(props:any) {
 
   return (
     <AccessContext.Provider value={auth}>
-       {props.children}
+      {props.children}
     </AccessContext.Provider>
   )
 }

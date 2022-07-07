@@ -40,7 +40,7 @@ export const handler = async (_req: Request, _ctx: HandlerContext): Promise<Resp
     //console.log("passphrase:",result)
 
     if(result==true){
-      console.log(crypto.randomUUID())
+      //console.log(crypto.randomUUID())
       const key = await genKey(TOKENKEY);
       console.log(Date.now())
       const tokenData = {

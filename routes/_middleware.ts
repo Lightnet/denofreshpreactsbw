@@ -7,9 +7,45 @@
 
 */
 
+// https://dev.to/thirashapraween/deno-websocket-realtime-chat-app-typescript-16kj
+// https://medium.com/deno-the-complete-reference/broadcast-channel-in-deno-f76a0b8893f5
+// https://til.simonwillison.net/deno/annotated-deno-deploy-demo
+// https://deno.com/blog/every-web-api-in-deno#broadcastchannel
+// 
+// 
+// 
+// https://deno.com/deploy/docs/runtime-broadcast-channel
+// https://oscarotero.com/deno/ Deno cheat sheet
+// deno websocket BroadcastChannel
+// https://deno.com/deploy/docs/runtime-sockets
+// 
+// 
+// 
+// 
+
+
+//import {WebSocket, isWebSocketCloseEvent} from "https://deno.land/std/ws/mod.ts";
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
 import { Database } from '../database.ts'
 //import { deleteCookie, setCookie, getCookies } from "https://deno.land/std/http/cookie.ts";
+
+interface BrodcastInterface {
+  name: string,
+  msg: string
+};
+
+let sockets = new Map<string, WebSocket>();
+
+
+
+//let channel = new BroadcastChannel("chatroom"); //not working yet
+
+//channel.onmessage = (event: MessageEvent) => {
+  // Update the local state when other instances
+  // send us a new message.
+  //messages.push(event.data);
+  //console.log("MSG:",event.data)
+//};
 
 export interface State {
   context: Context
@@ -59,8 +95,16 @@ function handleMessage(ws: WebSocket, data: string) {
     //return ws.close();
   //}
   //ws.send(reply as string);
+  //channel.postMessage(data);
   console.log("server ws:",data)
   ws.send(data as string);
+}
+
+//SOCKET BROADCAST
+const eventBrodcaster = (obj: BrodcastInterface) => {
+  sockets.forEach((ws: WebSocket) => {
+      ws.send(JSON.stringify(obj));
+  });
 }
 
 export async function handler(
@@ -88,6 +132,8 @@ export async function handler(
 
   //chat message
   //console.log(_req.headers.get("upgrade"))
+  // https://oscarotero.com/deno/
+  // https://doc.deno.land/deno/stable/~/WebSocket
   if(_req.headers.get("upgrade")==="websocket"){
     console.log("FOUND! upgrade")
     console.log(_req.headers.get("upgrade"))

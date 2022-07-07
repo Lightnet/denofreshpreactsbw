@@ -33,7 +33,7 @@ interface Data {
 }
 
 const { TOKENKEY } = config();
-console.log(TOKENKEY)
+//console.log(TOKENKEY)
 export const handler: Handlers<Data> = {
   async GET(_req, ctx) {
     let isLogin = false;

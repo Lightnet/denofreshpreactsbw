@@ -87,6 +87,25 @@ interface NoteSchema {
 const Note = Database.collection<NoteSchema>("note");
 
 
+interface HomeBaseSchema {
+  _id: { $oid: string };
+  id: string;
+  userID: string;
+  name: string;
+  characterID: string;
+  characterName: string;
+  isProtect:boolean;
+  timeRepair:string;
+  location:string;
+  x:number;
+  y:number;
+  z:number;
+  created: number;
+}
+const Homebase = Database.collection<HomeBaseSchema>("homebase");
+
+
+
 export { 
   Database, 
   User, 
@@ -95,5 +114,6 @@ export {
   GroupMessage,
   ChatMessage,
   Note,
+  Homebase,
 };
 console.log("init database!")

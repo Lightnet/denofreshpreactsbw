@@ -10,7 +10,7 @@ export default {
   async render(_ctx:RenderContext, render:InnerRenderFunction) {
     //console.log("_ctx")
     //console.log(_ctx)
-    console.log(_ctx)
+    //console.log(_ctx)
 
     //console.log("options???")
     await new Promise<void>((r) => r());

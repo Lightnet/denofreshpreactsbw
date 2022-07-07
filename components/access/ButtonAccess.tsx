@@ -4,21 +4,29 @@
 */
 
 /** @jsx h */
-import { h , createContext, Component } from "preact";
+import { h , createContext, Component, Fragment } from "preact";
 import { useEffect, useState, useContext } from "preact/hooks";
 import {AccessContext} from "./AccessProvider.tsx"
 import { IS_BROWSER } from "$fresh/runtime.ts";
 
 export default function ButtonAccess(){
   const {user , setUser} = useContext(AccessContext) as any;
-  function btnTest(){  
-    //console.log(access);
-    console.log("test button context")
-    console.log(user)
-    setUser("aaaa")
+  function btnTest0(){  
+    setUser("")
+  } 
+  function btnTest1(){  
+    setUser("user 1")
+  } 
+  function btnTest2(){  
+    setUser("user 2")
   } 
   return (
-    <button onClick={btnTest}>Hello Access {user}</button>
+    <Fragment>
+      <label> Hello, [{user}]</label>
+    <button onClick={btnTest0}>Hello user 0 </button>
+    <button onClick={btnTest1}>Hello user 1 </button>
+    <button onClick={btnTest2}>Hello user 2 </button>
+    </Fragment>
   )
 }
 

@@ -7,14 +7,16 @@
 import { h, Fragment, createContext } from "preact";
 import { useState, useContext, useMemo } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
-import ButtonAxiod from "./ButtonAxiod.tsx"
-import ButtonAxiodRefresh from "./ButtonAxiodRefresh.tsx"
+import ButtonAxiod from "../components/tests/ButtonAxiod.tsx"
+import ButtonAxiodRefresh from "../components/tests/ButtonAxiodRefresh.tsx"
 import NavMenu from "./NavMenu.tsx"
-import ButtonCall from "./ButtonCall.tsx"
-//import AccessProvider,{AccessContext} from "./AccessProvider.tsx"
-//import ButtonAccess from "./ButtonAccess.tsx"
+import ButtonCall from "../components/tests/ButtonCall.tsx"
 
-export const AccessContext = createContext<any>({});
+import AccessProvider from "../components/access/AccessProvider.tsx";
+import ButtonAccess from "../components/access/ButtonAccess.tsx"
+import DisplayUser from "../components/access/DisplayUser.tsx"
+
+//export const AccessContext = createContext<any>({});
 
 //const [user, setUser] = useState<string>("")
 //const auth = useMemo(() => {
@@ -23,26 +25,26 @@ export const AccessContext = createContext<any>({});
 //const AccessContext = createContext({auth});
 //const AccessContext = createContext("auth");
 
-const Theme = createContext('dark');
+//const Theme = createContext('dark');
 
-function DisplayTheme() {
-  const theme = useContext(Theme);
-  console.log()
-  return <p>Active theme: {theme}</p>;
-}
+//function DisplayTheme() {
+  //const theme = useContext(Theme);
+  //console.log()
+  //return <p>Active theme: {theme}</p>;
+//}
 
-function ButtonAccess(){
-  const {user , setUser} = useContext(AccessContext);
-  function btnTest(){  
+//function ButtonAccess(){
+  //const {user , setUser} = useContext(AccessContext);
+  //function btnTest(){  
     //console.log(access);
-    console.log("test button context")
-    console.log(user)
-    setUser("aaaa")
-  } 
-  return (
-    <button onClick={btnTest}>Hello Access {user}</button>
-  )
-}
+    //console.log("test button context")
+    //console.log(user)
+    //setUser("aaaa")
+  //} 
+  //return (
+    //<button onClick={btnTest}>Hello Access {user}</button>
+  //)
+//}
 
 export default function PageTestLab() {
 
@@ -75,17 +77,20 @@ export default function PageTestLab() {
           <ButtonAxiodRefresh />
           <ButtonCall testcall={testCALL} />
         </div>
-        <Theme.Provider value="dark">
-          <DisplayTheme />
-        </Theme.Provider>
-
-        <AccessContext.Provider value={auth}>
+        <AccessProvider>
           <ButtonAccess/>
-        </AccessContext.Provider>
+          <DisplayUser/>
+        </AccessProvider>
       </div>
     </div>
   );
 }
 /*
+<Theme.Provider value="dark">
+          <DisplayTheme />
+        </Theme.Provider>
 
+<AccessContext.Provider value={auth}>
+          <ButtonAccess/>
+        </AccessContext.Provider>
 */
