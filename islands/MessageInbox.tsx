@@ -9,7 +9,7 @@
 import { h, Fragment } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
-import { axiodapi } from "../libs/query.ts"
+import { axiodapi } from "../libs/queryapi.ts"
 
 type TMessage={
   _id:string;

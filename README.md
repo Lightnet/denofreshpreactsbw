@@ -41,6 +41,7 @@
 - chat websocket ( simple / wip )
 - message ( wip )
 - group message ( wip )
+- blog ( wip )
 - contact ( wip )
 - mobile base ( wip )
 - test lab ( testing components )

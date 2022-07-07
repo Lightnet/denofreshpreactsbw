@@ -8,7 +8,7 @@ import { h, Fragment } from "preact";
 //import { IS_BROWSER } from "$fresh/runtime.ts";
 import { useState } from "preact/hooks";
 
-import {axiodapi} from "../../libs/query.ts";
+import {axiodapi} from "../../libs/queryapi.ts";
 
 export default function Page(props:any) {
   const [baseName, setBaseName] = useState("");
@@ -19,7 +19,7 @@ export default function Page(props:any) {
     })
       .then((resp)=>{
         console.log(resp);
-        if(resp.data?.api){
+        if(resp.data?.api=="HOMEBASE"){
           if(resp.data?.homebase){
             console.log("FOUND")
             callfinish();

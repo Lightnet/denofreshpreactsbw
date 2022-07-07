@@ -102,7 +102,7 @@ export default function UISignup() {
               <span> | </span>
               <a href="/auth/signup">Sign Up</a>
               <span> | </span>
-              <button onClick={() => btnForgot()}>
+              <button onClick={() => btnForgot()} disabled={!IS_BROWSER}>
                 Recovery
               </button>
 

@@ -17,7 +17,7 @@ const { TOKENKEY } = config();
 export const handler = async (req: Request, _ctx: HandlerContext): Promise<Response> => {
 
   const cookies = getCookies(req.headers);
-  console.log(cookies);
+  //console.log(cookies);
   if(cookies.token){
     const key=await genKey(TOKENKEY);
     const token = await checkJWT(key,cookies.token)
@@ -25,7 +25,7 @@ export const handler = async (req: Request, _ctx: HandlerContext): Promise<Respo
       if(req.method ==="GET"){
         //const homebase = await Homebase.find({userID:token.id}).toArray()
         const homebase = await Homebase.findOne({userID:token.id})
-        console.log(homebase);
+        //console.log(homebase);
 
         const body = JSON.stringify({
           api:"HOMEBASE",
@@ -36,8 +36,8 @@ export const handler = async (req: Request, _ctx: HandlerContext): Promise<Respo
 
         const data = await req.json();
         const uuid = crypto.randomUUID();
-        console.log("data")
-        console.log(data)
+        //console.log("data")
+        //console.log(data)
 
         const homeBaseInfo = {
           id: uuid,

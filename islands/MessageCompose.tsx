@@ -7,7 +7,7 @@
 import { h, Fragment } from "preact";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { useState } from "preact/hooks";
-import { axiodapi } from "../libs/query.ts"
+import { axiodapi } from "../libs/queryapi.ts"
 
 export default function Page() {
   const [count, setCount] = useState(0);

@@ -5,17 +5,20 @@
 
 /** @jsx h */
 import { h, Fragment } from "preact";
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useContext } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import NavMenu from "./NavMenu.tsx"
 import CreateBase from "../components/mobilebase/CreateHomeBase.tsx"
 import HomeBase from "../components/mobilebase/HomeBase.tsx"
-import { axiodapi } from "../libs/query.ts";
-
+import { axiodapi } from "../libs/queryapi.ts";
+import MobileBaseProvider,{ MobileBaseContext } from "../components/mobilebase/MobileBaseProvider.tsx"
 export default function PageMobileBase() {
 
   const [canvasID, setCanvasID] = useState(crypto.randomUUID());
   const [isCreated, setIsCreated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [baseInfo, setBaseInfo] = useState(null);
+  //const { setBaseInfo } = useContext(MobileBaseContext) as any;
 
   useEffect(()=>{
     checkHomeBase();
@@ -27,40 +30,48 @@ export default function PageMobileBase() {
         console.log(resp);
         if(resp.data?.api){
           if(resp.data?.homebase){
-            console.log("FOUND")
+            //console.log("FOUND")
+            setBaseInfo(resp.data.homebase)
             setIsCreated(true)
           }else{
             console.log("NOT FOUND")
           }
         }
+        setIsLoading(false)
       })
       .catch((error)=>{
         console.log(error);
       });
   }
 
-  if(IS_BROWSER){
+  //if(IS_BROWSER){
     //renderer = new THREE.WebGLRenderer();
-    console.log("CLIENT")
-  }else{
-    console.log("SERVER")
-  }
+    //console.log("CLIENT")
+  //}else{
+    //console.log("SERVER")
+  //}
 
   function onCreateBase(){
     setIsCreated(true)
   }
 
+  if(isLoading){
+    return ( <div> Loading... </div> )
+  }
+
   return (
     <div>
       <NavMenu/>
-      <div id={canvasID} style="height:100vh;width:100%;">
-        <label> Mobile Base. </label>
-        {isCreated === true?(
-          <HomeBase/>
-        ):(
-          <CreateBase onCreated={onCreateBase}/>
-        )}
-      </div>
+      <MobileBaseProvider baseInfo={baseInfo}>
+        <div id={canvasID} style="height:100vh;width:100%;">
+          {isCreated === true?(
+            <HomeBase/>
+          ):(
+            <CreateBase onCreated={onCreateBase}/>
+          )}
+        </div>
+      </MobileBaseProvider>
     </div>
   );
 }
+// <label> Mobile Base. </label>

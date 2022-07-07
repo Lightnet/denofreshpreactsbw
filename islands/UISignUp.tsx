@@ -100,13 +100,11 @@ export default function UISignup() {
               <button onClick={() => btnCancel()}  disabled={!IS_BROWSER}>
                 Cancel
               </button>
-
             </td>
           </tr>
         </tbody>
       </table>
 
-      
     </div>
   );
 }

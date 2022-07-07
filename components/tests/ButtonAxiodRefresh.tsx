@@ -6,14 +6,13 @@
 /** @jsx h */
 import { h } from "preact";
 import { useEffect, useState } from "preact/hooks";
-import { axiodapi } from "../../libs/query.ts"
+import { axiodapi } from "../../libs/queryapi.ts"
 
 export default function ButtonAxiodRefresh() {
 
   function clickTest(e:Event){
     //console.log(e)
     console.log("query url")
-    //console.log(axiodapi)
     axiodapi.get('/auth/refresh')
     .then((response) => {
       // handle success

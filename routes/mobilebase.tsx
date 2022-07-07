@@ -8,7 +8,7 @@ import { h, Fragment } from "preact";
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import PageMobileBase from "../islands/PageMobileBase.tsx";
-
+//import MobileBaseProvider from "../components/mobilebase/MobileBaseProvider.tsx"
 export const handler: Handlers = {
   async GET(req, ctx) {
     //console.log("MobileBase");
@@ -25,8 +25,10 @@ export default function MobileBase() {
         <title>Threejs</title>
         <link rel="stylesheet" href="./styles.css"></link>
       </Head>
-      <PageMobileBase/>
+        <PageMobileBase/>
     </Fragment>
   );
 }
-// 
+// note Provider does not work here.
+// <MobileBaseProvider>
+// </MobileBaseProvider>
