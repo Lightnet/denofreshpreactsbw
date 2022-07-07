@@ -23,7 +23,8 @@ export const handler = async (req: Request, _ctx: HandlerContext): Promise<Respo
     const token = await checkJWT(key,cookies.token)
     if(token){
       if(req.method ==="GET"){
-        const homebase = await Homebase.find({userID:token.id}).toArray()
+        //const homebase = await Homebase.find({userID:token.id}).toArray()
+        const homebase = await Homebase.findOne({userID:token.id})
         console.log(homebase);
 
         const body = JSON.stringify({
@@ -35,18 +36,30 @@ export const handler = async (req: Request, _ctx: HandlerContext): Promise<Respo
 
         const data = await req.json();
         const uuid = crypto.randomUUID();
+        console.log("data")
+        console.log(data)
 
-        //const noteID = await Homebase.insertOne({
-          //id: uuid,
-          //userID:token.id,
-          //content: data.content,
-          //created: Date.now()
-        //})
-        //console.log(noteID);
+        const homeBaseInfo = {
+          id: uuid,
+          userID: token.id,
+          name: data.name,
+          characterID: "",
+          characterName: "",
+          isProtect: false,
+          timeRepair: "",
+          location: "",
+          x: 0,
+          y: 0,
+          z: 0,
+          created: Date.now()
+        }
+
+        await Homebase.insertOne(homeBaseInfo)
+        console.log(homeBaseInfo);
 
         const body = JSON.stringify({
           api:"CREATED",
-          id:uuid
+          homebase:homeBaseInfo
         });
         return new Response(body);
       }else{

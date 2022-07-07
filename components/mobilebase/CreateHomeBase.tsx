@@ -6,15 +6,31 @@
 /** @jsx h */
 import { h, Fragment } from "preact";
 //import { IS_BROWSER } from "$fresh/runtime.ts";
-//import { useState } from "preact/hooks";
+import { useState } from "preact/hooks";
+
+import {axiodapi} from "../../libs/query.ts";
+
 export default function Page(props:any) {
-  //const [count, setCount] = useState(0);
-  function btntest(){
-    console.log("Hello World")
-  }
+  const [baseName, setBaseName] = useState("");
 
   function queryCreateBase(){
-
+    axiodapi.post("/mobilebase",{
+      name:baseName
+    })
+      .then((resp)=>{
+        console.log(resp);
+        if(resp.data?.api){
+          if(resp.data?.homebase){
+            console.log("FOUND")
+            callfinish();
+          }else{
+            console.log("NOT FOUND")
+          }
+        }
+      })
+      .catch((error)=>{
+        console.log(error);
+      });
   }
 
   function callfinish(){
@@ -23,11 +39,17 @@ export default function Page(props:any) {
     }
   }
 
+  function inputBaseName(e:Event){
+    if (e.target instanceof HTMLInputElement) {
+      setBaseName(e.target.value);
+    }
+  }
+
   return (
     <Fragment>  
       <label>Name</label>
-      <input/>
-      <button onClick={()=>btntest()} > Create </button>
+      <input value={baseName} onInput={inputBaseName}/>
+      <button onClick={()=>queryCreateBase()} > Create </button>
     </Fragment>
   );
 }
