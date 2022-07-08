@@ -15,6 +15,25 @@ function Greeting({ name = "User" }: GreetingProps) {
 }
 ```
 
+```ts
+function inputAlias(e:Event){
+    if (e.target instanceof HTMLInputElement) {
+      setAlias(e.target.value);
+    }
+  }
+```
+
+```ts
+
+```
+
+```ts
+
+```
+
+```ts
+
+```
 
 
 

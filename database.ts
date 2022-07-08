@@ -104,7 +104,18 @@ interface HomeBaseSchema {
 }
 const Homebase = Database.collection<HomeBaseSchema>("homebase");
 
+//const uuid = crypto.randomUUID()
 
+interface BoardSchema {
+  _id: { $oid: string };
+  //id: string;
+  id: string;
+  userID: string;
+  name: string;
+  content:string
+  created: number;
+}
+const Board = Database.collection<BoardSchema>("board");
 
 export { 
   Database, 
@@ -115,5 +126,6 @@ export {
   ChatMessage,
   Note,
   Homebase,
+  Board,
 };
 console.log("init database!")
