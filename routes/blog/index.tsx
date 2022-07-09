@@ -20,9 +20,8 @@ import {
   //setCookie, 
   getCookies 
 } from "https://deno.land/std/http/cookie.ts";
-//import {encode, decode} from "https://deno.land/std/encoding/base64.ts";
-//import PageIndex from "../../islands/PageIndex.tsx"
 import { genKey, checkJWT} from "../../libs/helper.ts";
+import PageBlog from "../../islands/PageBlog.tsx"
 
 interface Data {
   isLogin: boolean;
@@ -74,7 +73,7 @@ export default function Home({ data }: PageProps<Data>) {
         <title>Blog</title>
         <link rel="stylesheet" href={asset("/styles.css")}></link>
       </Head>
-      
+      <PageBlog/>
     </Fragment>
   );
 }

@@ -117,6 +117,17 @@ interface BoardSchema {
 }
 const Board = Database.collection<BoardSchema>("board");
 
+interface BlogSchema {
+  _id: { $oid: string };
+  //id: string;
+  id: string;
+  userID: string;
+  title: string;
+  content:string
+  created: number;
+}
+const Blog = Database.collection<BlogSchema>("Blog");
+
 export { 
   Database, 
   User, 
@@ -127,5 +138,6 @@ export {
   Note,
   Homebase,
   Board,
+  Blog,
 };
 console.log("init database!")
