@@ -3,6 +3,8 @@
   Created by: Lightnet
 */
 
+// https://stackoverflow.com/questions/53585124/nodejs-mongodb-find-sort-toarray-does-not-work
+
 import { HandlerContext } from "$fresh/server.ts";
 import { deleteCookie, setCookie, getCookies } from "https://deno.land/std/http/cookie.ts";
 import { Blog } from "../../database.ts"
@@ -15,12 +17,13 @@ export const handler = async (req: Request, _ctx: HandlerContext): Promise<Respo
 
   const {method} = req;
   const cookies = getCookies(req.headers);
-  console.log(cookies)
+  //console.log(cookies)
 
   if(method === "GET"){
     const posts = await Blog.find()
     posts.limit(10);
     //console.log(posts)
+    posts.sort({ _id: -1 });
     const filterPosts = await posts.toArray();
     //console.log(filterPosts)
     const body = JSON.stringify({

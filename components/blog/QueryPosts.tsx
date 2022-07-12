@@ -9,6 +9,8 @@ import { h, Fragment } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import { axiodapi } from "../../libs/queryapi.ts"
 
+import QuillPost from "./QuillPost.tsx"
+
 type TPost={
   id:string;
   title:string;
@@ -51,12 +53,9 @@ export default function Page() {
       {posts.map((item)=>
         <div key={item.id}>
           <div>
-            <label> Title: {item.title} </label>
+            <h1> Title: {item.title} </h1>
           </div>
-          <div> Post: </div>
-          <div>
-            {item.content}
-          </div>
+          <QuillPost content={String(item.content)}/>
           <div>
             <label>{covertTimeToDate(item.created)}</label>
           </div>
@@ -65,3 +64,8 @@ export default function Page() {
     </div>
   )
 }
+/*
+<div>
+  {item.content}
+</div>
+*/

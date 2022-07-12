@@ -3,15 +3,73 @@
   Created by: Lightnet
 */
 
+// https://github.com/quilljs/quill
+/*
+
+quill.setText('Hello\n');
+quill.focus();
+
+*/
+
+
 /** @jsx h */
 import { h, Fragment } from "preact";
-//import { IS_BROWSER } from "$fresh/runtime.ts";
-import { useState } from "preact/hooks";
+import { Head, asset, IS_BROWSER  } from "$fresh/runtime.ts";
+import { useState, useEffect } from "preact/hooks";
 import { axiodapi } from "../../libs/queryapi.ts"
+// import {lazy, Suspense} from 'preact/compat';
+// import Quill from "quill";
+// quill.enable(false);  // Disables user input
 
 export default function Page() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  const [editor, setEditor] = useState(null);
+
+  useEffect(()=>{
+    if(IS_BROWSER){
+      initEditor();
+    }
+
+    return ()=>{
+      setEditor(null);
+    }
+  },[])
+
+  async function initEditor(){
+    const Quill = await (await import("quill")).default;
+    //console.log("Quill")
+    //console.log(Quill)
+    const qeditor = new Quill('#editor-container', {
+      modules: { 
+        //toolbar: '#toolbar'
+        toolbar: [
+          [{ header: [1, 2, false] }],
+          ['bold', 'italic', 'underline'],
+          ['image', 'code-block']
+        ]
+      },
+      placeholder: 'Text Editor Here!',
+      theme: 'snow',
+    })
+
+    qeditor.on('text-change', function(delta:any, oldDelta:any, source:any) {
+      if (source == 'api') {
+        console.log("An API call triggered this change.");
+      } else if (source == 'user') {
+        //console.log(delta)
+        const txt0 = qeditor.getText(0,qeditor.getLength());
+        console.log(txt0)
+        const txt = qeditor.getContents(0,qeditor.getLength()); 
+        console.log(txt.ops)
+        setContent(JSON.stringify(txt))
+        console.log("A user action triggered this change.");
+      }
+    });
+    setEditor(qeditor)
+
+  }
 
   function createBlog(){
     console.log(title)
@@ -48,7 +106,12 @@ export default function Page() {
   }
 
   return (
-    <div>  
+    <div>
+      <Head>
+      <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"/>
+      <link href="//cdn.quilljs.com/1.3.7/quill.core.css" rel="stylesheet" />
+      <script src="//cdn.quilljs.com/1.3.7/quill.core.js"></script>
+      </Head>
       <label> Create Blog </label>
       <table>
         <tbody>
@@ -69,8 +132,10 @@ export default function Page() {
           </tr>
           <tr>
             <td>
-              <textarea value={content} onInput={inputContent}></textarea>
+              <div id="editor-container">
+              </div>
             </td>
+            
           </tr>
           <tr>
             <td>
@@ -84,3 +149,13 @@ export default function Page() {
   );
 }
 // 
+/*
+<td>
+              <textarea value={content} onInput={inputContent}></textarea>
+            </td>
+
+<div id="toolbar">
+              <button class="ql-bold">Bold</button>
+              <button class="ql-italic">Italic</button>
+            </div>
+*/

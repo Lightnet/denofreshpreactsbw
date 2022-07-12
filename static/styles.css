@@ -30,3 +30,9 @@ body {
   height:100%;
   width:100%
 }
+
+#editor-container {
+  background:white;
+  width:500px;
+  height: 375px;
+}

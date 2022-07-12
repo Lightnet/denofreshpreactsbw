@@ -1,6 +1,20 @@
 https://deno.land/x/axiod@0.26.1
 https://axios-http.com/docs/example
 
+
+```ts
+//note to load text editor with IS_BROWSER since it need document to load correctly.
+const Quill = await (await import("quill")).default;
+
+```
+
+
+```ts
+
+```
+
+
+
 # import_map.json
   This package handler simalar to npm package.json.
 
