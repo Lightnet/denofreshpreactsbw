@@ -21,18 +21,18 @@ import { axiodapi } from "../../libs/queryapi.ts"
 // import Quill from "quill";
 // quill.enable(false);  // Disables user input
 
-export default function Page() {
+export default function Page(props:any) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
   const [editor, setEditor] = useState(null);
-
+  
   useEffect(()=>{
     if(IS_BROWSER){
       initEditor();
     }
 
     return ()=>{
+      console.log("CLOSE POST?")
       setEditor(null);
     }
   },[])
@@ -81,7 +81,11 @@ export default function Page() {
     })
     .then((response)=>{
       console.log(response)
-    })
+      if(typeof props.onData === 'function'){
+        props.onData(content);
+      }
+      
+      })
     .catch((error)=>{
       console.log(error)
     })
@@ -107,11 +111,7 @@ export default function Page() {
 
   return (
     <div>
-      <Head>
-      <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"/>
-      <link href="//cdn.quilljs.com/1.3.7/quill.core.css" rel="stylesheet" />
-      <script src="//cdn.quilljs.com/1.3.7/quill.core.js"></script>
-      </Head>
+      
       <label> Create Blog </label>
       <table>
         <tbody>

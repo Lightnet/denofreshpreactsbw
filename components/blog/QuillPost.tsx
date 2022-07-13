@@ -36,8 +36,8 @@ export default function Page(props:any) {
   },[content])
 
   useEffect(()=>{
-    console.log("divEl")
-    console.log(divEl.current)
+    //console.log("divEl")
+    //console.log(divEl.current)
     if(divEl.current){
       initEditor()
     }
@@ -46,18 +46,18 @@ export default function Page(props:any) {
   useEffect(()=>{
     
     if(editor){
-      console.log("editor")
-      console.log(editor)
-      console.log(content)
+      //console.log("editor")
+      //console.log(editor)
+      //console.log(content)
       const data = JSON.parse(content);
-      console.log(data)
+      //console.log(data)
       editor.setContents(data.ops)
     }
   },[editor])
 
   async function initEditor(){
     const Quill = await (await import("quill")).default;
-    console.log("Quill")
+    //console.log("Quill")
     //console.log(Quill)
     //console.log(content);
     //const id = "#"+contentID;
@@ -75,7 +75,7 @@ export default function Page(props:any) {
     //const text= String(content)
     //const value = `<h1>New content here</h1>`
     //const delta = qeditor.clipboard.convert(value)
-    qeditor.insertText(0, 'Hello', 'bold', true);
+    //qeditor.insertText(0, 'Hello', 'bold', true);
 
     //const data = await JSON.parse(text);
     //console.log(data)

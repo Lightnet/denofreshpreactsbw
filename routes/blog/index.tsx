@@ -26,6 +26,7 @@ import PageBlog from "../../islands/PageBlog.tsx"
 interface Data {
   isLogin: boolean;
   userName: string;
+  bPost:boolean;
 }
 
 const { TOKENKEY } = config();
@@ -34,6 +35,7 @@ export const handler: Handlers<Data> = {
   async GET(_req, ctx) {
     let isLogin = false;
     let userName = "Guest";
+    let bPost = false;
 
     const cookies = getCookies(_req.headers);
     //console.log(cookies)
@@ -47,13 +49,14 @@ export const handler: Handlers<Data> = {
         //console.log("VALIDTOKEN")
         userName=token.alias;
         isLogin=true;
+        bPost=true;
       }else{
         //console.log("INVALIDTOKEN")
         //clear cookie token
       }
     }
     
-    return ctx.render({ isLogin, userName });
+    return ctx.render({ isLogin, userName, bPost });
   },
 };
 
@@ -73,7 +76,7 @@ export default function Home({ data }: PageProps<Data>) {
         <title>Blog</title>
         <link rel="stylesheet" href={asset("/styles.css")}></link>
       </Head>
-      <PageBlog/>
+      <PageBlog {...data}/>
     </Fragment>
   );
 }

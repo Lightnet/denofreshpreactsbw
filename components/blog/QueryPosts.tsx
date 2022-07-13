@@ -29,7 +29,7 @@ export default function Page() {
   function getPosts(){
     axiodapi.get("blog")
     .then((response)=>{
-      console.log(response)
+      //console.log(response)
       if(response.data?.api === "POSTS"){
         setPosts(response.data.posts)
       }
@@ -41,8 +41,8 @@ export default function Page() {
 
   function covertTimeToDate(time:number){
     const date = new Date(time);
-    console.log(date)
-    console.log( date.getTime())
+    //console.log(date)
+    //console.log( date.getTime())
     //return date.getTime();
     //return date.toDateString();
     return date.toDateString() + " " + date.toLocaleTimeString();
