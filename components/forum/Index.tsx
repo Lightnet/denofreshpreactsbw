@@ -7,6 +7,7 @@
 import { h, Fragment } from "preact";
 //import { IS_BROWSER } from "$fresh/runtime.ts";
 import CreateBoard from "./CreateBoard.tsx"
+import QueryForum from "./QueryForum.tsx"
 
 import { useState, useEffect } from "preact/hooks";
 export default function Page() {
@@ -16,8 +17,6 @@ export default function Page() {
   useEffect(()=>{
 
   },[])
-
-
 
   function onCloseBoard(){
     setIsShowBoard(false)
@@ -36,9 +35,7 @@ export default function Page() {
       {isShowBoard == true && <Fragment>
         <CreateBoard onClose={onCloseBoard}/>
       </Fragment>}
-      <div>
-
-      </div>
+      <QueryForum/>
     </div>
   );
 }

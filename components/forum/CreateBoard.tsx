@@ -6,7 +6,7 @@
 /** @jsx h */
 import { h, Fragment } from "preact";
 //import { IS_BROWSER } from "$fresh/runtime.ts";
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import { axiodapi } from "../../libs/queryapi.ts"
 
 export default function Page(props:any) {
@@ -14,13 +14,26 @@ export default function Page(props:any) {
   const [boardName, setBoardName] = useState("");
   const [boardContent, setBoardContent] = useState("");
 
+  const [editor, setEditor] = useState(null);
+
+  const [selectParent, setSelectParent] = useState([]);
+  const [selectParents, setSelectParents] = useState([]);
+
+  const [parentID, setParentID] = useState();
+
+  useEffect(()=>{
+    initEditor();
+  },[])
+
   function queryCreateBoard(){
     axiodapi.post("/forum/board",{
       api:"CREATE",
+      parentID:parentID,
       name:boardName,
       content:boardContent
     }).then((response)=>{
       console.log(response)
+      clickCLose();
     })
     .catch((error)=>{
       console.log(error)
@@ -39,22 +52,64 @@ export default function Page(props:any) {
     }
   }
 
+  async function initEditor(){
+    const Quill = await (await import("quill")).default;
+    //console.log("Quill")
+    //console.log(Quill)
+    const qeditor = new Quill('#editor-container', {
+      modules: { 
+        //toolbar: '#toolbar'
+        toolbar: [
+          [{ header: [1, 2, false] }],
+          ['bold', 'italic', 'underline'],
+          ['image', 'code-block']
+        ]
+      },
+      placeholder: 'Text Editor Here!',
+      theme: 'snow',
+    })
+
+    qeditor.on('text-change', function(delta:any, oldDelta:any, source:any) {
+      if (source == 'api') {
+        console.log("An API call triggered this change.");
+      } else if (source == 'user') {
+        //console.log(delta)
+        const txt0 = qeditor.getText(0,qeditor.getLength());
+        console.log(txt0)
+        const txt = qeditor.getContents(0,qeditor.getLength()); 
+        console.log(txt.ops)
+        setBoardContent(JSON.stringify(txt))
+        console.log("A user action triggered this change.");
+      }
+    });
+    setEditor(qeditor)
+  }
+
   function clickCLose(){
     if(typeof props.onClose === 'function'){
       props.onClose();
     }
   }
+  // <textarea value={boardContent} onInput={inputContent}/>
   return (
     <div>
       <div>
-        <label>Board</label>
+        <label>Create Board</label>
       </div>
       <div>
         <table>
           <tbody>
             <tr>
               <td>
-                <label>Name:</label><input value={boardName} onInput={inputName}/>
+                <label>Parent:</label>
+                <select>
+                  <option value="index"> Index </option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>Title Name:</label><input value={boardName} onInput={inputName}/>
               </td>
             </tr>
             <tr>
@@ -64,7 +119,8 @@ export default function Page(props:any) {
             </tr>
             <tr>
               <td>
-                <textarea value={boardContent} onInput={inputContent}/>
+                <div id="editor-container"></div>
+                
               </td>
             </tr>
             <tr>

@@ -68,7 +68,6 @@ export default function Page(props:any) {
       }
     });
     setEditor(qeditor)
-
   }
 
   function createBlog(){

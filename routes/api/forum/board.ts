@@ -15,6 +15,16 @@ export const handler = async (req: Request, _ctx: HandlerContext): Promise<Respo
   const cookies = getCookies(req.headers);
   console.log(cookies)
 
+  if(method === "GET"){
+    const boards =await Board.find().toArray()
+    console.log(boards)
+
+    const body = JSON.stringify({
+      api:"BOARDS",
+      boards:boards
+    });
+    return new Response(body);
+  }
   
 
   if(method === "POST"){
