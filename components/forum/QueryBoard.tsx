@@ -10,7 +10,7 @@ import { useState, useEffect } from "preact/hooks";
 import { axiodapi } from "../../libs/queryapi.ts"
 import QuillContent from "./QuillContent.tsx"
 
-export default function QueryForum() {
+export default function QueryBoard() {
 
   const [boards, setBoards] = useState<any>([]);
 

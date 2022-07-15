@@ -7,7 +7,7 @@
 import { h, Fragment } from "preact";
 //import { IS_BROWSER } from "$fresh/runtime.ts";
 //import { useState } from "preact/hooks";
-export default function Topic() {
+export default function PageBoard() {
   //const [count, setCount] = useState(0);
   //function btntest(){
     //console.log("Hello World")
@@ -15,7 +15,7 @@ export default function Topic() {
   return (
     <div>
       <div>
-        <label>Forum</label>
+        <label>Board</label>
       </div>
       <div>
 

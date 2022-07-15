@@ -9,26 +9,33 @@ import { h, Fragment } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import { axiodapi } from "../../libs/queryapi.ts"
 
-export default function CreateBoard(props:any) {
+type TComment={
+  postID?:string;
+  onClose?:()=>void;
+}
+
+export default function CreateComment(props:TComment) {
 
   const [boardName, setBoardName] = useState("");
   const [boardContent, setBoardContent] = useState("");
-
   const [editor, setEditor] = useState(null);
-
-  const [selectParent, setSelectParent] = useState([]);
-  const [selectParents, setSelectParents] = useState([]);
-
-  const [parentID, setParentID] = useState();
+  const [parentID, setParentID] = useState("");
 
   useEffect(()=>{
     initEditor();
+    if(props.postID){
+      setParentID(props.postID)
+    }
+    return ()=>{
+      setEditor(null);
+    }
   },[])
 
-  function queryCreateBoard(){
-    axiodapi.post("/forum/board",{
+  function queryCreateComment(){
+    console.log(parentID)
+    axiodapi.post("/forum/comment",{
       api:"CREATE",
-      parentID:parentID,
+      postID:parentID,
       name:boardName,
       content:boardContent
     }).then((response)=>{
@@ -71,15 +78,15 @@ export default function CreateBoard(props:any) {
 
     qeditor.on('text-change', function(delta:any, oldDelta:any, source:any) {
       if (source == 'api') {
-        console.log("An API call triggered this change.");
+        //console.log("An API call triggered this change.");
       } else if (source == 'user') {
         //console.log(delta)
-        const txt0 = qeditor.getText(0,qeditor.getLength());
-        console.log(txt0)
+        //const txt0 = qeditor.getText(0,qeditor.getLength());
+        //console.log(txt0)
         const txt = qeditor.getContents(0,qeditor.getLength()); 
-        console.log(txt.ops)
+        //console.log(txt.ops)
         setBoardContent(JSON.stringify(txt))
-        console.log("A user action triggered this change.");
+        //console.log("A user action triggered this change.");
       }
     });
     setEditor(qeditor)
@@ -94,7 +101,7 @@ export default function CreateBoard(props:any) {
   return (
     <div>
       <div>
-        <label>Create Board</label>
+        <label>Create Topic</label>
       </div>
       <div>
         <table>
@@ -120,12 +127,11 @@ export default function CreateBoard(props:any) {
             <tr>
               <td>
                 <div id="editor-container"></div>
-                
               </td>
             </tr>
             <tr>
               <td>
-                <button onClick={queryCreateBoard}>Submit</button>
+                <button onClick={queryCreateComment}>Submit</button>
                 <button onClick={clickCLose}>Cancel</button>
               </td>
             </tr>

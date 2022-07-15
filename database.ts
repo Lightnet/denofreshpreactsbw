@@ -109,6 +109,7 @@ const Homebase = Database.collection<HomeBaseSchema>("homebase");
 interface BoardSchema {
   _id: { $oid: string };
   //id: string;
+  parentID:string;
   id: string;
   userID: string;
   name: string;
@@ -116,6 +117,30 @@ interface BoardSchema {
   created: number;
 }
 const Board = Database.collection<BoardSchema>("board");
+
+interface TopicSchema {
+  _id: { $oid: string };
+  //id: string;
+  parentID:string;
+  id: string;
+  userID: string;
+  name: string;
+  content:string
+  created: number;
+}
+const Topic = Database.collection<TopicSchema>("topic");
+
+interface CommentSchema {
+  _id: { $oid: string };
+  //id: string;
+  parentID:string;
+  id: string;
+  userID: string;
+  name: string;
+  content:string
+  created: number;
+}
+const Comment = Database.collection<CommentSchema>("comment");
 
 interface BlogSchema {
   _id: { $oid: string };
@@ -126,7 +151,7 @@ interface BlogSchema {
   content:string
   created: number;
 }
-const Blog = Database.collection<BlogSchema>("Blog");
+const Blog = Database.collection<BlogSchema>("blog");
 
 export { 
   Database, 
@@ -138,6 +163,8 @@ export {
   Note,
   Homebase,
   Board,
+  Topic,
+  Comment,
   Blog,
 };
 console.log("init database!")

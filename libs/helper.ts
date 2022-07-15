@@ -40,3 +40,8 @@ export const checkJWT=async (key:CryptoKey, jwt:string)=>{
 
 //const data=await checkJWT(key, jwt);
 //data: { exp: 1630257876513, a: "b", c: "d", e: 100 }
+
+
+export function isEmpty(str:string) {
+  return (!str || str.length === 0 );
+}

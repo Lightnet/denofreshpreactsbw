@@ -18,14 +18,13 @@ export default function QueryForum() {
     getBoards()
   },[])
 
-
   function getBoards(){
-    axiodapi.get('forum/board')
+    axiodapi.get('forum/topic')
     .then(resp=>{
       console.log(resp)
       if(resp.data?.api){
-        if(resp.data?.boards){
-          setBoards(resp.data.boards)
+        if(resp.data?.topics){
+          setBoards(resp.data.topics)
         }
       }
     }).catch(error=>{
@@ -33,18 +32,18 @@ export default function QueryForum() {
     })
   }
 
-
   return (
     <div>
       <div>
         <label>Index</label>
       </div>
       {boards.map((item:any)=><div key={item.id}>
-        <div><a href={`/forum/board?id=${item.id}`}>Board: {item.name}</a> </div>
-        <QuillContent content={String(item.content)}/>
-        
+        <div>
+          <a href={(`/forum/topic?id=${item.id}`)}>Topic: {item.name}</a> 
+        </div>
       </div>)}
     </div>
   );
 }
+// <QuillContent content={String(item.content)}/>
 // <div><label>{item.content}</label> </div>

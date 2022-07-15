@@ -13,20 +13,21 @@ export default function CreateBoard(props:any) {
 
   const [boardName, setBoardName] = useState("");
   const [boardContent, setBoardContent] = useState("");
-
   const [editor, setEditor] = useState(null);
-
-  const [selectParent, setSelectParent] = useState([]);
-  const [selectParents, setSelectParents] = useState([]);
-
   const [parentID, setParentID] = useState();
+
+  useEffect(()=>{
+    if(props.parentID){
+      setParentID(props.parentID)
+    }
+  },[props])
 
   useEffect(()=>{
     initEditor();
   },[])
 
   function queryCreateBoard(){
-    axiodapi.post("/forum/board",{
+    axiodapi.post("/forum/topic",{
       api:"CREATE",
       parentID:parentID,
       name:boardName,
@@ -94,7 +95,7 @@ export default function CreateBoard(props:any) {
   return (
     <div>
       <div>
-        <label>Create Board</label>
+        <label>Create Topic</label>
       </div>
       <div>
         <table>
@@ -120,7 +121,6 @@ export default function CreateBoard(props:any) {
             <tr>
               <td>
                 <div id="editor-container"></div>
-                
               </td>
             </tr>
             <tr>

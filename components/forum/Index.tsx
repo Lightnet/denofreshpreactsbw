@@ -6,11 +6,16 @@
 /** @jsx h */
 import { h, Fragment } from "preact";
 //import { IS_BROWSER } from "$fresh/runtime.ts";
-import CreateBoard from "./CreateBoard.tsx"
-import QueryForum from "./QueryForum.tsx"
-
 import { useState, useEffect } from "preact/hooks";
-export default function Page() {
+
+import CreateBoard from "./CreateBoard.tsx"
+import CreateTopic from "./CreateTopic.tsx"
+
+import QueryBoard from "./QueryBoard.tsx"
+import QueryTopic from "./QueryTopic.tsx"
+
+export default function Index() {
+
   const [isShowBoard, setIsShowBoard] = useState(false);
   const [isShowTopic, setIsShowTopic] = useState(false);
 
@@ -25,17 +30,34 @@ export default function Page() {
   function onCloseTopic(){
     setIsShowTopic(false)
   }
+
+  function openCreate(name:string){
+    if(name=="board"){
+      setIsShowBoard(true)
+      setIsShowTopic(false)
+    }
+
+    if(name=="topic"){
+      setIsShowBoard(false)
+      setIsShowTopic(true)
+    }
+  }
+
   return (
     <div>
       <div>
         <label>Forum</label> 
-        <button onClick={()=>setIsShowBoard(true)}> Create Board </button>
-        <button onClick={()=>setIsShowTopic(true)}> Create Topic </button>
+        <button onClick={()=>openCreate("board")}> Create Board </button>
+        <button onClick={()=>openCreate("topic")}> Create Topic </button>
       </div>
       {isShowBoard == true && <Fragment>
         <CreateBoard onClose={onCloseBoard}/>
       </Fragment>}
-      <QueryForum/>
+      {isShowTopic == true && <Fragment>
+        <CreateTopic onClose={onCloseTopic}/>
+      </Fragment>}
+      <QueryBoard />
+      <QueryTopic />
     </div>
   );
 }
