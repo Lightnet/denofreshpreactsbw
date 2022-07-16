@@ -18,22 +18,28 @@ import {
 } from "https://deno.land/std/http/cookie.ts";
 
 import { genKey, checkJWT} from "../../libs/helper.ts";
-import PageForum from "../../islands/PageForum.tsx"
+import PageBoard from "../../islands/PageBoard.tsx"
+
+// https://deno.land/std@0.148.0/node/url.ts?s=parse
+import { parse } from "$std/node/url.ts";
 
 interface Data {
   isLogin: boolean;
   userName: string;
+  postID:string;
 }
 
 const { TOKENKEY } = config();
 
 export const handler: Handlers<Data> = {
-  async GET(_req, ctx) {
+  async GET(req, ctx) {
     let isLogin = false;
     let userName = "Guest";
+    let postID = "";
 
-    const cookies = getCookies(_req.headers);
+    const cookies = getCookies(req.headers);
     //console.log(cookies)
+    const data:any = parse(req.url,true,true);
     if(cookies.token){
       const key=await genKey(TOKENKEY);
       const token = await checkJWT(key,cookies.token)
@@ -41,22 +47,25 @@ export const handler: Handlers<Data> = {
         //console.log("VALIDTOKEN")
         userName=token.alias;
         isLogin=true;
+        if(data.query?.id){
+          postID=data.query?.id as string || ""
+        }
       }
     }
-    return ctx.render({ isLogin, userName });
+    return ctx.render({ isLogin, userName, postID });
   },
 };
 
 export default function Board({ data }: PageProps<Data>) {
   //console.log(data)
-  const {isLogin, userName} = data;
+  const {isLogin, userName, postID} = data;
   return (
     <Fragment>
       <Head>
         <title>Board</title>
         <link rel="stylesheet" href={asset("/styles.css")}></link>
       </Head>
-      <PageForum/>
+      <PageBoard postID={String(postID)}/>
     </Fragment>
   );
 }

@@ -23,12 +23,23 @@ export const handler = async (req: Request, _ctx: HandlerContext): Promise<Respo
     const pData:any = parse(req.url,true,false)
     //console.log(pData)
     if(pData.query?.id){
-      //console.log("FOUND SINGLE")
+      //console.log("get topic")
       const topic =await Topic.findOne({id:pData.query.id})
       //console.log(topic)
       const body = JSON.stringify({
         api:"TOPIC",
         topic:topic
+      });
+      return new Response(body);
+    }
+
+    if(pData.query?.parentid){
+      console.log("get topics")
+      const topics =await Topic.find({parentID:pData.query.parentid}).toArray()
+      console.log(topics)
+      const body = JSON.stringify({
+        api:"TOPICS",
+        topics:topics
       });
       return new Response(body);
     }

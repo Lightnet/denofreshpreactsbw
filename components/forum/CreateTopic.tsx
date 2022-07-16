@@ -20,6 +20,9 @@ export default function CreateBoard(props:any) {
     if(props.parentID){
       setParentID(props.parentID)
     }
+    if(props.postID){
+      setParentID(props.postID)
+    }
   },[props])
 
   useEffect(()=>{
@@ -75,12 +78,12 @@ export default function CreateBoard(props:any) {
         console.log("An API call triggered this change.");
       } else if (source == 'user') {
         //console.log(delta)
-        const txt0 = qeditor.getText(0,qeditor.getLength());
-        console.log(txt0)
+        //const txt0 = qeditor.getText(0,qeditor.getLength());
+        //console.log(txt0)
         const txt = qeditor.getContents(0,qeditor.getLength()); 
-        console.log(txt.ops)
+        //console.log(txt.ops)
         setBoardContent(JSON.stringify(txt))
-        console.log("A user action triggered this change.");
+        //console.log("A user action triggered this change.");
       }
     });
     setEditor(qeditor)

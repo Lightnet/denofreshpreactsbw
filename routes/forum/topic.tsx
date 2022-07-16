@@ -26,7 +26,7 @@ import { parse } from "$std/node/url.ts";
 interface Data {
   isLogin: boolean;
   userName: string;
-  postID:String;
+  postID:string;
 }
 
 const { TOKENKEY } = config();
